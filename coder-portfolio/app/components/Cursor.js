@@ -6,10 +6,16 @@ import { useEffect, useState } from 'react';
 const Cursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-  const scale = useTransform(cursorX, [-100, window.innerWidth], [0.8, 1.2]);
+
+  const [windowWidth, setWindowWidth] = useState(1920); // default fallback
+  const scale = useTransform(cursorX, [-100, windowWidth], [0.8, 1.2]);
+
   const [isVisible, setIsVisible] = useState(true); // Start as visible
 
   useEffect(() => {
+    // Safe access to window
+    setWindowWidth(window.innerWidth);
+
     let isMounted = true;
 
     const moveCursor = (e) => {
@@ -21,15 +27,14 @@ const Cursor = () => {
 
     const handleMouseEnter = () => {
       setIsVisible(true);
-      document.body.style.cursor = 'none'; // Hide default cursor
+      document.body.style.cursor = 'none';
     };
 
     const handleMouseLeave = () => {
       setIsVisible(false);
-      document.body.style.cursor = 'auto'; // Restore default cursor
+      document.body.style.cursor = 'auto';
     };
 
-    // Initialize visibility based on mouse presence
     if (document.body) {
       setIsVisible(document.body.matches(':hover'));
     }
@@ -43,7 +48,7 @@ const Cursor = () => {
       window.removeEventListener('mousemove', moveCursor);
       document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('mouseleave', handleMouseLeave);
-      document.body.style.cursor = 'auto'; // Cleanup
+      document.body.style.cursor = 'auto';
     };
   }, []);
 

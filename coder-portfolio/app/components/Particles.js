@@ -1,19 +1,22 @@
-
 'use client'
 
-import React from 'react'
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 const Particles = () => {
-
-
   const mountRef = useRef(null);
 
   useEffect(() => {
+    if (!mountRef.current) return;
+
     // Scene setup
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
@@ -39,22 +42,18 @@ const Particles = () => {
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
 
-    // Camera position
     camera.position.z = 5;
 
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
-
-      // Rotate particles
       particlesMesh.rotation.x += 0.001;
       particlesMesh.rotation.y += 0.001;
-
       renderer.render(scene, camera);
     };
     animate();
 
-    // Handle window resize
+    // Resize handling
     const handleResize = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -65,12 +64,13 @@ const Particles = () => {
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
-      mountRef.current.removeChild(renderer.domElement);
+      if (mountRef.current?.contains(renderer.domElement)) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
     };
   }, []);
 
-
   return <div ref={mountRef} style={{ position: 'fixed', top: 0, left: 0, zIndex: -1 }} />;
-}
+};
 
-export default Particles
+export default Particles;
