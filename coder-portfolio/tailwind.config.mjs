@@ -16,12 +16,15 @@
 //   plugins: [],
 // };
 module.exports = {
-content: [
-  "./app/**/*.{js,jsx}",
-  "./components/**/*.{js,jsx}"
+  content: [
+    "./app/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}"
   ],
   theme: {
     extend: {
+      touchAction: {
+        'none': 'none',
+      },
       colors: {
         cyber: {
           purple: '#7D3CFF',
@@ -30,6 +33,9 @@ content: [
         }
       },
       fontFamily: {
+        'space-grotesk': ['Space Grotesk', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        'fira-code': ['Fira Code', 'monospace'],
         terminal: ['Space Mono', 'monospace'],
         cyber: ['Rajdhani', 'sans-serif']
       },

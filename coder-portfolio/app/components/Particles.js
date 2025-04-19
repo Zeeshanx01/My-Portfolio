@@ -70,7 +70,7 @@ const Particles = () => {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ position: 'fixed', top: 0, left: 0, zIndex: -1 }} />;
+  return <div ref={mountRef} style={{ position: 'fixed', top: 0, left: 0, zIndex: -1, backgroundColor: 'black' }} />;
 };
 
 export default Particles;

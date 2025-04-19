@@ -1,7 +1,6 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-// ... other imports ...
 import Cursor from "./components/Cursor"
 import Particles from "./components/Particles"
 import IconForSkill from "./components/IconForSkill"
@@ -12,37 +11,29 @@ const fontStyles = {
   mono: "font-['Fira_Code']"
 }
 
-export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrollingDown, setIsScrollingDown] = useState(false)
-  const lastScrollY = useRef(0)
-
+export default function Hom() {
   const [activeSection, setActiveSection] = useState('home')
   const sections = ['home', 'about', 'skills', 'projects', 'contact']
-  
-  // Mobile menu toggle
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-    document.body.style.overflow = isMenuOpen ? 'auto' : 'hidden'
-  }
 
-  // Scroll direction detection
+  // Scroll detection logic
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      setIsScrollingDown(currentScrollY > lastScrollY.current)
-      lastScrollY.current = currentScrollY
+      const scrollY = window.scrollY
+      const sectionOffsets = sections.map(section => {
+        const el = document.getElementById(section)
+        return el ? el.offsetTop : 0
+      })
+
+      const currentSection = sectionOffsets.reduce((acc, offset, index) => {
+        return scrollY >= offset - 100 ? sections[index] : acc
+      }, 'home')
+
+      setActiveSection(currentSection)
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  // Responsive navigation variants
-  const mobileNavVariants = {
-    open: { x: 0, opacity: 1 },
-    closed: { x: '-100%', opacity: 0 }
-  }
 
   const navVariants = {
     hidden: { opacity: 0, x: -20 },
@@ -54,196 +45,13 @@ export default function Home() {
       <Particles />
       <Cursor />
 
-
-
-      {/* Mobile Navigation */}
-      <motion.nav
-        className="fixed lg:hidden bottom-4 right-4 z-50"
-        // initial={{ scale: 0 }}
-        // animate={{
-        //   scale: 1,
-        //   y: isScrollingDown ? 100 : 0,
-        //   opacity: isScrollingDown ? 0 : 1
-        // }}
-        transition={{ type: 'spring', stiffness: 100 }}
-      >
-        <button
-          onClick={toggleMenu}
-          className="w-10 h-10 rounded-full bg-purple-500/30 backdrop-blur-lg border2 border-purple-400/50 flex items-center justify-center shadow-lg shadow-purple-500/20"
-        >
-          <motion.div
-            className="w-6 h-6 relative flex flex-col justify-center"
-            animate={isMenuOpen ? 'open' : 'closed'}
-          >
-            <motion.span
-              className="absolute block w-full h-[2px] bg-purple-400 origin-center"
-              variants={{
-                closed: { y: "-8px", rotate: 0 },
-                open: { y: 0, rotate: 45 }
-              }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.span
-              className="absolute block w-full h-[2px] bg-purple-400"
-              variants={{
-                closed: { opacity: 1 },
-                open: { opacity: 0 }
-              }}
-              transition={{ duration: 0.1 }}
-            />
-            <motion.span
-              className="absolute block w-full h-[2px] bg-purple-400 origin-center"
-              variants={{
-                closed: { y: "8px", rotate: 0 },
-                open: { y: 0, rotate: -45 }
-              }}
-              transition={{ duration: 0.3 }}
-            />
-          </motion.div>
-        </button>
-      </motion.nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={mobileNavVariants}
-            className="fixed inset-0 bg-black/95 backdrop-blur-xl lg:hidden z-40 p-8"
-          >
-            <div className="flex flex-col h-full">
-              {/* Mobile Profile Section */}
-              <motion.div
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                className="mb-8"
-              >
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4" />
-                <h1 className={`text-2xl ${fontStyles.heading} text-white`}>
-                  Zeeshan
-                </h1>
-                <p className={`text-purple-400 ${fontStyles.mono}`}>
-                  Full-Stack Developer
-                </p>
-              </motion.div>
-
-              {/* Mobile Navigation Links */}
-              <div className="space-y-4 flex-1">
-                {sections.map((section) => (
-                  <motion.a
-                    key={section}
-                    href={`#${section}`}
-                    onClick={toggleMenu}
-                    className={`block text-2xl ${fontStyles.heading} ${activeSection === section
-                      ? 'text-purple-400 pl-4 border-l-4 border-purple-400'
-                      : 'text-gray-400'
-                      }`}
-                    initial={{ x: -20 }}
-                    animate={{ x: 0 }}
-                    transition={{ delay: 0.1 * sections.indexOf(section) }}
-                  >
-                    {section.charAt(0).toUpperCase() + section.slice(1)}
-                  </motion.a>
-                ))}
-              </div>
-
-              {/* Mobile Social Links */}
-              <div className="mt-8 space-y-3">
-                <motion.a
-                  href="#"
-                  className="flex items-center gap-3 text-gray-400 hover:text-purple-400 text-lg"
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    {/* GitHub SVG */}
-                  </svg>
-                  GitHub
-                </motion.a>
-                {/* Add other social links */}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-
-
-
-
-
-
-
-      {/* Sticky Bottom Bar (Mobile Only) */}
-      <motion.div
-        className="fixed lg:hidden bottom-0 left-0 right-0 bg-black bg-opacity-20 backdrop-blur-sm border-t border-white/10 z-40"
-        // animate={{ y: isScrollingDown ? 100 : 0 }}
-        transition={{ type: 'spring', stiffness: 300 }}
-      >
-        <div className="flex justify-around p-4">
-          <a
-            href="#contact"
-            className="px-6 py-2 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium flex items-center gap-2"
-          >
-            <span>📧</span> Contact
-          </a>
-          <a
-            href="#projects"
-            className="px-6 py-2 bg-white/5 text-white/80 rounded-full text-sm font-medium flex items-center gap-2"
-          >
-            <span>💻</span> Projects
-          </a>
-        </div>
-      </motion.div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* Existing Desktop Navigation */}
+      {/* Animated Left Navigation */}
       <motion.nav
         initial={{ x: -100 }}
         animate={{ x: 0 }}
         transition={{ type: 'spring', stiffness: 100 }}
-        className="hidden lg:block fixed left-0 top-0 h-screen w-72 p-8 border-r border-white/10 backdrop-blur-sm bg-black/30 bg-opacity-50 z-50"
-      // ... existing desktop nav code ...
+        className="fixed left-0 top-0 h-screen w-72 p-8 border-r border-white/10 backdrop-blur-sm bg-black/30 bg-opacity-50 z-50"
       >
-        {/* ... desktop nav content ... */}
         <div className="flex flex-col items-start gap-6 h-full">
           {/* Animated Profile Section */}
           <motion.div
@@ -277,8 +85,8 @@ export default function Home() {
                 key={section}
                 href={`#${section}`}
                 className={`block text-lg transition-colors ${fontStyles.heading} ${activeSection === section
-                  ? 'text-purple-400 pl-4 border-l-4 border-purple-400'
-                  : 'text-gray-400 hover:text-purple-300'
+                    ? 'text-purple-400 pl-4 border-l-4 border-purple-400'
+                    : 'text-gray-400 hover:text-purple-300'
                   }`}
                 variants={navVariants}
                 initial="hidden"
@@ -312,37 +120,10 @@ export default function Home() {
         </div>
       </motion.nav>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       {/* Main Content */}
-      <main className="ml-0 lg:ml-72 pl-0 lg:pl-8 max-lg:w-[100%] overflow-hidden ">
-        {/* ... existing content sections ... */}
+      <main className="ml-72 pl-8">
         {/* Hero Section */}
-        <section id="home" className="min-h-screen py-32 bg-red500 w-[90%] mx-auto flex items-center">
+        <section id="home" className="min-h-screen py-32 flex items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -382,7 +163,7 @@ export default function Home() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="min-h-screen bg-red500 w-[90%] mx-auto py-32">
+        <section id="about" className="min-h-screen py-32">
           <motion.div
             className="max-w-6xl mx-auto backdrop-blur-xl bg-black/30 p-12 rounded-3xl border-2 border-purple-500/30"
             initial={{ opacity: 0 }}
@@ -617,28 +398,11 @@ export default function Home() {
             </form>
           </motion.div>
         </section>
+
+
+
+
       </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   )
 }
