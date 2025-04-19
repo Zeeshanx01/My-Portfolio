@@ -6,37 +6,85 @@ import Cursor from "./components/Cursor"
 import Particles from "./components/Particles"
 import IconForSkill from "./components/IconForSkill"
 
+
+
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
   body: "font-['Inter'] font-light",
   mono: "font-['Fira_Code']"
 }
 
+
+
+
 export default function Home() {
+
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrollingDown, setIsScrollingDown] = useState(false)
   const lastScrollY = useRef(0)
 
   const [activeSection, setActiveSection] = useState('home')
   const sections = ['home', 'about', 'skills', 'projects', 'contact']
-  
+
+
+
+
+
   // Mobile menu toggle
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
     document.body.style.overflow = isMenuOpen ? 'auto' : 'hidden'
   }
 
-  // Scroll direction detection
+
+
+
+
+
+  // Update the scroll detection useEffect
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      setIsScrollingDown(currentScrollY > lastScrollY.current)
-      lastScrollY.current = currentScrollY
-    }
+      const threshold = 150; // Adjust this value based on your needs
+      const offsets = sections.map(section => {
+        const el = document.getElementById(section);
+        return el ? el.getBoundingClientRect().top + window.scrollY - threshold : 0;
+      });
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      let currentSection = 'home';
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (scrollPosition >= offsets[i]) {
+          currentSection = sections[i];
+          break;
+        }
+      }
+
+      setActiveSection(currentSection);
+    };
+
+    // Add event listeners
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+
+    // Initial call
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
+
+  // Add click handler for mobile menu links
+  const handleNavClick = (section) => {
+    setActiveSection(section);
+    if (window.innerWidth < 1024) { // lg breakpoint
+      setIsMenuOpen(false);
+    }
+  };
+
 
   // Responsive navigation variants
   const mobileNavVariants = {
@@ -44,10 +92,16 @@ export default function Home() {
     closed: { x: '-100%', opacity: 0 }
   }
 
+
   const navVariants = {
     hidden: { opacity: 0, x: -20 },
     visible: { opacity: 1, x: 0 }
   }
+
+
+
+
+
 
   return (
     <div className={`min-h-screen b-black bg-opacity-20 text-gray-300 ${fontStyles.body}`}>
@@ -153,7 +207,10 @@ export default function Home() {
                   <motion.a
                     key={section}
                     href={`#${section}`}
-                    onClick={toggleMenu}
+                    onClick={() => {
+                      toggleMenu();
+                      handleNavClick(section);
+                    }}
                     className={`block text-2xl ${fontStyles.heading} ${activeSection === section
                       ? 'text-purple-400 pl-4 border-l-4 border-purple-400'
                       : 'text-gray-400'
@@ -168,10 +225,11 @@ export default function Home() {
               </div>
 
               {/* Mobile Social Links */}
-              <div className="mt-8 space-y-3">
+              <div className="mt-8 mb-12 space-y-3">
                 <motion.a
                   href="#"
                   className="flex items-center gap-3 text-gray-400 hover:text-purple-400 text-lg"
+                  
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     {/* GitHub SVG */}
@@ -195,7 +253,7 @@ export default function Home() {
       {/* Sticky Bottom Bar (Mobile Only) */}
       <motion.div
         className="fixed lg:hidden bottom-0 left-0 right-0 bg-black bg-opacity-20 backdrop-blur-sm border-t border-white/10 z-40"
-        // animate={{ y: isScrollingDown ? 100 : 0 }}
+        animate={{ y: isScrollingDown ? 100 : 0 }}
         transition={{ type: 'spring', stiffness: 300 }}
       >
         <div className="flex justify-around p-4">
@@ -276,6 +334,7 @@ export default function Home() {
               <motion.a
                 key={section}
                 href={`#${section}`}
+                onClick={() => handleNavClick(section)}
                 className={`block text-lg transition-colors ${fontStyles.heading} ${activeSection === section
                   ? 'text-purple-400 pl-4 border-l-4 border-purple-400'
                   : 'text-gray-400 hover:text-purple-300'
@@ -381,20 +440,33 @@ export default function Home() {
           </motion.div>
         </section>
 
+
+
+
         {/* About Section */}
-        <section id="about" className="min-h-screen bg-red500 w-[90%] mx-auto py-32">
+        <section id="about" className="min-h-screen   mx-auto py-32">
+
           <motion.div
-            className="max-w-6xl mx-auto backdrop-blur-xl bg-black/30 p-12 rounded-3xl border-2 border-purple-500/30"
+            className="max-w-6xl w-[90%] mx-auto backdrop-blur-xl bgred-500 bg-black/30 p-12 max-md:p-6 rounded-3xl border-2 border-purple-500/30"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
           >
+
             <h2 className={`text-4xl ${fontStyles.heading} text-purple-400 mb-8`}>
               &lt;About/&gt;
             </h2>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+
+
+
+
+
+            <div className="grid md:grid-cols-2 w-[100%] bgblue-500 gap-12 items-center">
+
+
               <div className="space-y-6">
+
                 <motion.p
-                  className={`text-xl text-white/80 leading-relaxed ${fontStyles.body}`}
+                  className={`text-xl max-md:text-md w[85%] text-white/80 leading-relaxed ${fontStyles.body}`}
                   initial={{ x: -20 }}
                   whileInView={{ x: 0 }}
                 >
@@ -403,19 +475,27 @@ export default function Home() {
                   <span className="text-purple-300"> user-centered design</span>. Specialized in modern web
                   technologies and interactive experiences.
                 </motion.p>
+
+                
                 <motion.div
-                  className="flex gap-4"
+                  className="flex gap-4 justify-end"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                 >
+
                   <button className={`px-6 py-3 bg-purple-500/20 border border-purple-500/30 rounded-lg text-purple-300 hover:bg-purple-500/30 transition-all ${fontStyles.mono}`}>
                     Download CV
                   </button>
-                  <button className={`px-6 py-3 bg-white/5 border border-white/10 rounded-lg text-white/80 hover:bg-white/10 transition-all ${fontStyles.mono}`}>
+
+                  {/* <button className={`px-6 py-3 bg-white/5 border border-white/10 rounded-lg text-white/80 hover:bg-white/10 transition-all ${fontStyles.mono}`}>
                     View Certifications
-                  </button>
+                  </button> */}
+
                 </motion.div>
               </div>
+
+
+
               <motion.div
                 className="relative h-64 w-64 mx-auto"
                 whileHover={{ scale: 1.05 }}
@@ -423,7 +503,13 @@ export default function Home() {
                 <div className="absolute inset-0 bg-purple-500/10 blur-2xl" />
                 <div className="relative h-full w-full bg-black/50 backdrop-blur-sm rounded-2xl border-2 border-purple-500/30" />
               </motion.div>
+
+
             </div>
+
+
+
+
           </motion.div>
         </section>
 
