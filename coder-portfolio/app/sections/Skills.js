@@ -1,7 +1,5 @@
-
 import React from 'react'
-
-import { motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import IconForSkill from "../components/IconForSkill"
 
 const fontStyles = {
@@ -10,8 +8,27 @@ const fontStyles = {
   mono: "font-['Fira_Code']"
 }
 
+// Skill level classification function
+const getSkillLevelLabel = (level) => {
+  if (level <= 30) return 'Novice';
+  if (level <= 55) return 'Competent';
+  if (level <= 79) return 'Proficient';
+  if (level <= 94) return 'Expert';
+  return 'Master'; // For 95-100%
+};
 
 const Skills = () => {
+  const skills = [
+    { name: 'React', level: 15 },
+    { name: 'MongoDB', level: 65 },
+    { name: 'Next.js', level: 90 },
+    { name: 'Three.js', level: 80 },
+    { name: 'Node.js', level: 88 },
+    { name: 'Python', level: 75 },
+    { name: 'AWS', level: 70 },
+    { name: 'Docker', level: 82 }
+  ]
+
   return (
     <div>
       <section id="skills" className="min-h-screen py-20 px-4">
@@ -30,26 +47,27 @@ const Skills = () => {
           </motion.h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {['React', 'Next.js', 'Three.js', 'Node.js', 'Python', 'AWS', 'Docker', 'MongoDB'].map((skill, index) => (
+            {skills.map((skill) => (
               <motion.div
-                key={skill}
+                key={skill.name}
                 className="p-6 bg-black/30 backdrop-blur-sm border-2 border-purple-500/20 rounded-xl hover:border-purple-500/50 transition-all group relative overflow-hidden"
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ delay: index * 0.1, type: 'spring' }}
+                transition={{ type: 'spring' }}
                 whileHover={{ y: -5 }}
               >
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
                 <motion.div
                   className="text-purple-400 text-4xl mb-4 opacity-80 group-hover:opacity-100"
-                  animate={{ rotate: [0, 10, -10, 0] }}
+                  animate={{ rotate: [0, 3, -3, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <IconForSkill skill={skill} className="text-4xl mb-4 opacity-80 group-hover:opacity-100 transition-all" />
+                  <IconForSkill skill={skill.name} className="text-4xl mb-4 opacity-80 group-hover:opacity-100 transition-all" />
                 </motion.div>
 
-                <h3 className={`text-xl font-semibold text-white/90 ${fontStyles.heading}`}>{skill}</h3>
+                <h3 className={`text-xl font-semibold text-white/90 ${fontStyles.heading}`}>{skill.name}</h3>
+
                 <motion.div
                   className="text-white/60 text-sm mt-2 flex items-center gap-2"
                   initial={{ opacity: 0 }}
@@ -58,10 +76,12 @@ const Skills = () => {
                   <div className="h-1 w-full bg-purple-500/20 rounded-full">
                     <div
                       className="h-full bg-purple-500 rounded-full transition-all duration-500"
-                      style={{ width: `${Math.min(90 + index * 5, 100)}%` }}
+                      style={{ width: `${skill.level}%` }}
                     />
                   </div>
-                  Expert
+                  <span className="text-purple-400 text-xs font-medium">
+                    {getSkillLevelLabel(skill.level)}
+                  </span>
                 </motion.div>
               </motion.div>
             ))}
