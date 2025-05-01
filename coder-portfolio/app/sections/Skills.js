@@ -31,7 +31,7 @@ const Skills = () => {
 
   return (
     <div>
-      <section id="skills" className="min-h-screen py-20 px-4">
+      {/* <section id="skills" className="min-h-screen py-20 px-4">
         <motion.div
           className="max-w-6xl mx-auto"
           initial={{ opacity: 0 }}
@@ -87,7 +87,7 @@ const Skills = () => {
             ))}
           </div>
         </motion.div>
-      </section>
+      </section> */}
     </div>
   )
 }
