@@ -42,7 +42,7 @@ export default function Home() {
 
 
         {/* Skills Section */}
-        <Skills />
+        {/* <Skills /> */}
 
 
         {/* Projects Section */}
