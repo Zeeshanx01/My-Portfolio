@@ -23,8 +23,8 @@ export default function Home() {
   return (
     <div className={`min-h-screen b-black bg-opacity-20 text-gray-300 ${fontStyles.body}`}>
       
-      {/* <Particles />
-      <Cursor /> */}
+      <Particles />
+      {/* <Cursor /> */}
 
 
       <Navbar />
