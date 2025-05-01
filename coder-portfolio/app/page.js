@@ -38,7 +38,7 @@ export default function Home() {
 
 
         {/* About Section */}
-        {/* <About /> */}
+        <About />
 
 
         {/* Skills Section */}
