@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 // ... other imports ...
 import Cursor from "./components/Cursor"
 import Particles from "./components/Particles"
+import UnderConstruction from "./components/UnderConstruction"
 
 import Navbar from "./components/Navbar"
 
@@ -22,9 +23,9 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen b-black bg-opacity-20 text-gray-300 ${fontStyles.body}`}>
-      
+      <UnderConstruction />
       <Particles />
-      {/* <Cursor /> */}
+      <Cursor />
 
 
       <Navbar />
@@ -42,7 +43,7 @@ export default function Home() {
 
 
         {/* Skills Section */}
-        {/* <Skills /> */}
+        <Skills />
 
 
         {/* Projects Section */}
