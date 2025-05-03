@@ -40,7 +40,7 @@ export default function UnderConstruction() {
             <div className="relative">
               <div className="flex justify-center mb-6">
                 <motion.div
-                  className="w-64 h-32 bg-black/50 border border-purple-500/30 rounded-lg p-4 font-mono text-sm relative overflow-hidden"
+                  className="w-64 h-48 bg-black/50 border border-purple-500/30 rounded-lg p-4 font-mono text-sm relative overflow-hidden"
                 >
                   {/* Terminal header */}
                   <div className="flex gap-2 mb-3">
@@ -50,7 +50,7 @@ export default function UnderConstruction() {
                   </div>
 
                   {/* Animated code lines */}
-                  <div className="space-y-1">
+                  <div className="space-y-2">
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -62,7 +62,7 @@ export default function UnderConstruction() {
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.5 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
                       className="text-green-400"
                     >
                       &gt; Starting development server...
@@ -70,7 +70,7 @@ export default function UnderConstruction() {
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 1 }}
+                      transition={{ duration: 0.5, delay: 0.6 }}
                       className="text-blue-400"
                     >
                       &gt; Building components...
@@ -78,7 +78,7 @@ export default function UnderConstruction() {
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 1.5 }}
+                      transition={{ duration: 0.5, delay: 0.9 }}
                       className="text-yellow-400"
                     >
                       &gt; Optimizing assets...
