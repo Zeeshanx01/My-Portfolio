@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import Cursor from "./components/Cursor"
 import Particles from "./components/Particles"
 import UnderConstruction from "./components/UnderConstruction"
+import LoadingScreen from "./components/LoadingScreen"
 
 import Navbar from "./components/Navbar"
 
@@ -20,42 +21,47 @@ const fontStyles = {
 }
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate loading time for components
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2000) // Adjust this time as needed
+
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <div className={`min-h-screen b-black bg-opacity-20 text-gray-300 ${fontStyles.body}`}>
       {/* <UnderConstruction /> */}
-      <Particles />
-      <Cursor />
+      {isLoading ? (
+        <LoadingScreen />
+      ) : (
+        <>
+          <Particles />
+          <Cursor />
+          <Navbar />
 
+          {/* Main Content */}
+          <main className="ml-0 lg:ml-72 pl-0 lg:pl-8 max-lg:w-[100%] overflow-hidden ">
+            {/* Hero Section */}
+            <Hero />
 
-      <Navbar />
+            {/* About Section */}
+            <About />
 
+            {/* Skills Section */}
+            <Skills />
 
-      {/* Main Content */}
-      <main className="ml-0 lg:ml-72 pl-0 lg:pl-8 max-lg:w-[100%] overflow-hidden ">
+            {/* Projects Section */}
+            <Projects />
 
-        {/* Hero Section */}
-        <Hero />
-
-
-        {/* About Section */}
-        <About />
-
-
-        {/* Skills Section */}
-        <Skills />
-
-
-        {/* Projects Section */}
-        <Projects />
-
-
-        {/* Contact Section */}
-        <Contact />
-
-      </main>
-
-
+            {/* Contact Section */}
+            <Contact />
+          </main>
+        </>
+      )}
     </div>
   )
 }
