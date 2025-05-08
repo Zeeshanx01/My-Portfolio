@@ -22,10 +22,7 @@ const fontStyles = {
 
 export default function Home() {
 
-
-
-
-  
+// Enter checking push
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
