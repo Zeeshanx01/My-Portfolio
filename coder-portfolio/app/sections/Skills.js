@@ -1,6 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import IconForSkill from "../components/IconForSkill"
+import dynamic from 'next/dynamic'
+
+// Dynamically import IconForSkill component
+const IconForSkill = dynamic(() => import("../components/IconForSkill"))
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
@@ -14,7 +17,7 @@ const getSkillLevelLabel = (level) => {
   if (level <= 55) return 'Competent';
   if (level <= 79) return 'Proficient';
   if (level <= 94) return 'Expert';
-  return 'Master'; // For 95-100%
+  return 'Master';
 };
 
 const Skills = () => {
@@ -36,32 +39,33 @@ const Skills = () => {
           className="max-w-6xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
         >
           <motion.h2
             className={`text-4xl ${fontStyles.heading} text-purple-400 mb-12 text-center`}
             initial={{ y: 20 }}
             whileInView={{ y: 0 }}
+            transition={{ duration: 0.5 }}
           >
             &lt;Tech Stack/&gt;
           </motion.h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {skills.map((skill) => (
+            {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
                 className="p-6 bg-black/30 backdrop-blur-sm border-2 border-purple-500/20 rounded-xl hover:border-purple-500/50 transition-all group relative overflow-hidden"
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ type: 'spring' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
               >
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
                 <motion.div
                   className="text-purple-400 text-4xl mb-4 opacity-80 group-hover:opacity-100"
-                  animate={{ rotate: [0, 3, -3, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  animate={{ rotate: [0, 2, -2, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
                 >
                   <IconForSkill skill={skill.name} className="text-4xl mb-4 opacity-80 group-hover:opacity-100 transition-all" />
                 </motion.div>
@@ -72,11 +76,14 @@ const Skills = () => {
                   className="text-white/60 text-sm mt-2 flex items-center gap-2"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
                 >
                   <div className="h-1 w-full bg-purple-500/20 rounded-full">
-                    <div
-                      className="h-full bg-purple-500 rounded-full transition-all duration-500"
-                      style={{ width: `${skill.level}%` }}
+                    <motion.div
+                      className="h-full bg-purple-500 rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1, delay: 0.3 }}
                     />
                   </div>
                   <span className="text-purple-400 text-xs font-medium">

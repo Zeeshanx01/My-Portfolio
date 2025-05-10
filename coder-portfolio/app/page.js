@@ -1,18 +1,30 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import dynamic from 'next/dynamic'
 // ... other imports ...
-import Cursor from "./components/Cursor"
-import Particles from "./components/Particles"
 import UnderConstruction from "./components/UnderConstruction"
 import LoadingScreen from "./components/LoadingScreen"
 
-import Navbar from "./components/Navbar"
+// Dynamically import heavy components
+const Particles = dynamic(() => import("./components/Particles"), {
+  ssr: false,
+  loading: () => <div className="fixed inset-0 bg-black" />
+})
 
-import Hero from "./sections/Hero"
-import About from "./sections/About"
-import Skills from "./sections/Skills"
-import Projects from "./sections/Projects"
-import Contact from "./sections/Contact"
+const Cursor = dynamic(() => import("./components/Cursor"), {
+  ssr: false
+})
+
+const Navbar = dynamic(() => import("./components/Navbar"), {
+  loading: () => <div className="h-16 bg-black/20 backdrop-blur-sm" />
+})
+
+// Dynamically import sections
+const Hero = dynamic(() => import("./sections/Hero"))
+const About = dynamic(() => import("./sections/About"))
+const Skills = dynamic(() => import("./sections/Skills"))
+const Projects = dynamic(() => import("./sections/Projects"))
+const Contact = dynamic(() => import("./sections/Contact"))
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
@@ -31,7 +43,7 @@ export default function Home() {
     // Simulate loading time for components
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2000) // Adjust this time as needed
+    }, 1500) // Reduced loading time
 
     return () => clearTimeout(timer)
   }, [])
@@ -40,29 +52,44 @@ export default function Home() {
     <div className={`min-h-screen b-black bg-opacity-20 text-gray-300 ${fontStyles.body}`}>
       {/* <UnderConstruction /> */}
       {isLoading ? (
-        <LoadingScreen />
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-purple-500/20 border-t-purple-500 rounded-full animate-spin" />
+        </div>
       ) : (
         <>
-          <Particles />
-          <Cursor />
-          <Navbar />
+          <Suspense fallback={<div className="fixed inset-0 bg-black" />}>
+            <Particles />
+          </Suspense>
+          
+          <Suspense fallback={null}>
+            <Cursor />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-16 bg-black/20 backdrop-blur-sm" />}>
+            <Navbar />
+          </Suspense>
 
           {/* Main Content */}
-          <main className="ml-0 lg:ml-72 pl-0 lg:pl-8 max-lg:w-[100%] overflow-hidden ">
-            {/* Hero Section */}
-            <Hero />
+          <main className="ml-0 lg:ml-72 pl-0 lg:pl-8 max-lg:w-[100%] overflow-hidden">
+            <Suspense fallback={<div className="h-screen" />}>
+              <Hero />
+            </Suspense>
 
-            {/* About Section */}
-            <About />
+            <Suspense fallback={<div className="h-screen" />}>
+              <About />
+            </Suspense>
 
-            {/* Skills Section */}
-            <Skills />
+            <Suspense fallback={<div className="h-screen" />}>
+              <Skills />
+            </Suspense>
 
-            {/* Projects Section */}
-            <Projects />
+            <Suspense fallback={<div className="h-screen" />}>
+              <Projects />
+            </Suspense>
 
-            {/* Contact Section */}
-            <Contact />
+            <Suspense fallback={<div className="h-screen" />}>
+              <Contact />
+            </Suspense>
           </main>
         </>
       )}
