@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} ${firaCode.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${inter.variable} ${firaCode.variable} antialiased bg-black`}
       >
         {/* 
         // 
