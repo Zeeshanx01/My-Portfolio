@@ -5,6 +5,11 @@ import dynamic from 'next/dynamic'
 import UnderConstruction from "./components/UnderConstruction"
 import LoadingScreen from "./components/LoadingScreen"
 
+
+
+
+
+
 // Dynamically import heavy components
 const Particles = dynamic(() => import("./components/Particles"), {
   ssr: false,
@@ -23,6 +28,7 @@ const Navbar = dynamic(() => import("./components/Navbar"), {
 const Hero = dynamic(() => import("./sections/Hero"))
 const About = dynamic(() => import("./sections/About"))
 const Skills = dynamic(() => import("./sections/Skills"))
+const TechStack = dynamic(() => import("./sections/TechStack"))
 const Projects = dynamic(() => import("./sections/Projects"))
 const Contact = dynamic(() => import("./sections/Contact"))
 
@@ -36,7 +42,7 @@ const fontStyles = {
 // dhsfgjsdhfs
 export default function Home() {
 
-// Enter checking push
+  // Enter checking push
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -57,6 +63,9 @@ export default function Home() {
         </div>
       ) : (
         <>
+
+
+
           <Suspense fallback={<div className="fixed inset-0 bg-black" />}>
             <Particles />
           </Suspense>
@@ -65,12 +74,19 @@ export default function Home() {
             <Cursor />
           </Suspense>
 
+
+
+
+
           <Suspense fallback={<div className="h-16 bg-black/20 backdrop-blur-sm" />}>
             <Navbar />
           </Suspense>
 
           {/* Main Content */}
           <main className="ml-0 lg:ml-72 pl-0 lg:pl-8 max-lg:w-[100%] overflow-hidden">
+
+
+
             <Suspense fallback={<div className="h-screen" />}>
               <Hero />
             </Suspense>
@@ -81,6 +97,10 @@ export default function Home() {
 
             <Suspense fallback={<div className="h-screen" />}>
               <Skills />
+            </Suspense>
+
+            <Suspense fallback={<div className="h-screen" />}>
+              <TechStack />
             </Suspense>
 
             <Suspense fallback={<div className="h-screen" />}>

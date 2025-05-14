@@ -37,9 +37,9 @@ const timeline = [
 
 const interests = [
   {
-    title: 'Gaming',
-    description: 'Enjoy strategic and puzzle games',
-    icon: FaGamepad,
+    title: 'Coding',
+    description: 'Passionate about solving problems and building projects',
+    icon: FaCode,
     color: 'text-purple-400'
   },
   {
@@ -63,7 +63,7 @@ const About = () => {
     <div>
       <section id="about" className="min-h-screen mx-auto py-32">
         <motion.div
-          className="max-w-6xl w-[90%] mx-auto backdrop-blur-xl bg-black/30 p-12 max-md:p-6 rounded-3xl border-2 border-purple-500/30"
+          className="max-w-6xl w-[90%] max-sm:w-full mx-auto backdrop-blur-sm bg-black/10 p-12 max-md:p-6 rounded-3xl border max-sm:border-none border-purple-500/30"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
         >
@@ -132,7 +132,7 @@ const About = () => {
               <div className="relative">
                 {/* Vertical Line */}
                 <motion.div
-                  className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500/50 via-purple-500/30 to-purple-500/50"
+                  className="absolute left-10 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500/50 via-purple-500/30 to-purple-500/50"
                   initial={{ height: 0 }}
                   whileInView={{ height: '100%' }}
                   transition={{ duration: 1 }}
@@ -150,19 +150,19 @@ const About = () => {
                       {/* Dot and Year */}
                       <div className="absolute left-0 top-0">
                         <motion.div
-                          className="absolute left-6 top-0 w-3 h-3 -translate-x-1/2 bg-purple-500 rounded-full"
+                          className="absolute left-[35px] top-0 w-3 h-3 -translate-x-1/2 bg-purple-500 rounded-full"
                           initial={{ scale: 0 }}
                           whileInView={{ scale: 1 }}
                           transition={{ delay: index * 0.1 + 0.5 }}
                         />
                         <motion.div
-                          className="absolute left-6 top-0 w-3 h-3 -translate-x-1/2 bg-purple-500/20 rounded-full"
+                          className="absolute left-[35px] top-0 w-3 h-3 -translate-x-1/2 bg-purple-500/20 rounded-full"
                           initial={{ scale: 0 }}
                           whileInView={{ scale: 2.5 }}
                           transition={{ delay: index * 0.1 + 0.5 }}
                         />
                         <motion.span
-                          className={`absolute left-0 top-0 -translate-y-1/2 ${fontStyles.heading} text-purple-400`}
+                          className={`absolute -left-4 top-2 -translate-y-1/2 ${fontStyles.heading} text-purple-400`}
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
                           transition={{ delay: index * 0.1 + 0.7 }}

@@ -15,14 +15,14 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrollingDown, setIsScrollingDown] = useState(false)
 
-  const sections = ['home', 'about', 'skills', 'projects', 'contact']
+  const sections = ['home', 'about', 'skills', 'techstack', 'projects', 'contact']
 
   const [activeSection, setActiveSection] = useState('home')
 
 
 
   const lastScrollY = useRef(0)
-  
+
   // Mobile menu toggle
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -30,51 +30,51 @@ const Navbar = () => {
   }
 
 
-  
-    // Update the scroll detection useEffect
-    useEffect(() => {
-      const handleScroll = () => {
-        const threshold = 150; // Adjust this value based on your needs
-        const offsets = sections.map(section => {
-          const el = document.getElementById(section);
-          return el ? el.getBoundingClientRect().top + window.scrollY - threshold : 0;
-        });
-  
-        const scrollPosition = window.scrollY + window.innerHeight / 2;
-  
-        let currentSection = 'home';
-        for (let i = sections.length - 1; i >= 0; i--) {
-          if (scrollPosition >= offsets[i]) {
-            currentSection = sections[i];
-            break;
-          }
+
+  // Update the scroll detection useEffect
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = 150; // Adjust this value based on your needs
+      const offsets = sections.map(section => {
+        const el = document.getElementById(section);
+        return el ? el.getBoundingClientRect().top + window.scrollY - threshold : 0;
+      });
+
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      let currentSection = 'home';
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (scrollPosition >= offsets[i]) {
+          currentSection = sections[i];
+          break;
         }
-  
-        setActiveSection(currentSection);
-      };
-  
-      // Add event listeners
-      window.addEventListener('scroll', handleScroll);
-      window.addEventListener('resize', handleScroll);
-  
-      // Initial call
-      handleScroll();
-  
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('resize', handleScroll);
-      };
-    }, []);
-  
-    // Add click handler for mobile menu links
-    const handleNavClick = (section) => {
-      setActiveSection(section);
-      if (window.innerWidth < 1024) { // lg breakpoint
-        setIsMenuOpen(false);
       }
+
+      setActiveSection(currentSection);
     };
-  
-  
+
+    // Add event listeners
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+
+    // Initial call
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
+
+  // Add click handler for mobile menu links
+  const handleNavClick = (section) => {
+    setActiveSection(section);
+    if (window.innerWidth < 1024) { // lg breakpoint
+      setIsMenuOpen(false);
+    }
+  };
+
+
 
 
 
@@ -96,7 +96,7 @@ const Navbar = () => {
 
   return (
     <div>
-      
+
       {/* Mobile Navigation */}
       <motion.nav
         className="fixed lg:hidden bottom-4 right-4 z-50"

@@ -85,7 +85,11 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
             >
-              A frontend specialist passionate about building beautiful, responsive, and user-friendly web applications using modern technologies and best practices.
+              {/* A frontend specialist passionate about building beautiful, responsive, and user-friendly web applications using modern technologies and best practices. */}
+              {/* A frontend specialist dedicated to crafting visually stunning, responsive, and intuitive web applications with cutting-edge technologies and industry standards. */}
+              {/* A frontend specialist dedicated to creating visually appealing, highly responsive, and user-centric web applications leveraging modern technologies and industry best practices. */}
+              
+              A frontend specialist passionate about creating visually appealing, highly responsive, and user-centric web applications leveraging modern technologies and industry best practices.
             </motion.p>
 
             {/* Tech Stack */}
