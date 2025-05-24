@@ -20,6 +20,9 @@ module.exports = {
     "./app/**/*.{js,jsx}",
     "./components/**/*.{js,jsx}"
   ],
+    plugins: [
+    require('@tailwindcss/container-queries'),
+  ],
   theme: {
     extend: {
       touchAction: {
