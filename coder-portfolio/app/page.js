@@ -66,13 +66,13 @@ export default function Home() {
 
 
 
-          {/* <Suspense fallback={<div className="fixed inset-0 bg-black" />}>
+          <Suspense fallback={<div className="fixed inset-0 bg-black" />}>
             <Particles />
           </Suspense>
           
           <Suspense fallback={null}>
             <Cursor />
-          </Suspense> */}
+          </Suspense>
 
 
 
