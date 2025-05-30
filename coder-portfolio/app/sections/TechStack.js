@@ -65,14 +65,19 @@ const TechStack = () => {
             &lt;Tech Stack/&gt;
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <motion.div 
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+                          initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+          >
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
                 className="p-6 bg-black/30 backdrop-blur-sm border-2 border-purple-500/20 rounded-xl hover:border-purple-500/50 transition-all group relative overflow-hidden"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                // initial={{ opacity: 0, y: 20 }}
+                // whileInView={{ opacity: 1, y: 0 }}
+                // transition={{ delay: index * 0.05 }}
               >
                 {/* Icon with respective color */}
                 <div className={`${skill.color} text-4xl mb-4`}>
@@ -101,7 +106,7 @@ const TechStack = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

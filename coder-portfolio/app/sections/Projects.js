@@ -75,8 +75,33 @@ const Projects = () => {
     768: 1
   };
 
+
+
+
+
+
+
+
+
+
+
+
   return (
     <section id="projects" className="min-h-screen py-20 px-4">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <motion.h2
         className={`text-4xl ${fontStyles.heading} text-purple-400 mb-12 text-center`}
         initial={{ opacity: 0, y: 20 }}
@@ -84,6 +109,20 @@ const Projects = () => {
       >
         &lt;Projects/&gt;
       </motion.h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
         {projectsData.map((project) => (
@@ -101,7 +140,7 @@ const Projects = () => {
                 src={project.image}
                 alt={project.title}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
             </div>
@@ -124,13 +163,34 @@ const Projects = () => {
         ))}
       </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <AnimatePresence>
         {selectedProject && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-lg flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
@@ -152,22 +212,55 @@ const Projects = () => {
                 <PortfolioBadge />
 
                 {/* Project Cover Image */}
-                <div className="relative h-64 rounded-xl overflow-hidden border border-purple-500/20">
+                <div className="relative h-72 md:h-96 rounded-xl overflow-hidden borderborder-purple-500/20">
                   <Image
                     src={selectedProject.image}
                     alt={selectedProject.title}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                 </div>
 
-                {/* Project Details Box */}
-                <div className="p-6 bg-black/30 rounded-xl border border-purple-500/20">
-                  <h4 className={`text-2xl ${fontStyles.heading} text-purple-400 mb-6`}>
-                    Project Details
-                  </h4>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+
+
+
+
+
+
+
+
+
+
+
+                {/* Project Details Box */}
+                <div className="p-6 w-full bg-black-300/30 rounded-xl border border-purple-500/20 md:flex justify-between">
+
+
+
+
+                  {/* Project Overview */}
+                  <div className="md:w-[68%] max-md:mb-6 bgblue-300/30 rounded-xl borderborder-purple-500/20">
+                    <h5 className={`text-3xl ${fontStyles.heading} text-purple-400 mb-3`}>
+                      Overview
+                    </h5>
+                    <p className="text-white/80 leading-relaxed">
+                      {selectedProject.details.purpose} This project showcases advanced full-stack
+                      development capabilities including API design, database management, and modern
+                      UI implementation. The system features secure authentication, real-time analytics,
+                      and responsive design principles.
+                    </p>
+                  </div>
+
+
+
+
+
+                  <div className="md:w-[30%] grid grid-cols-1 md:grid-cols gap-4 mb-6 p-4 bgyellow-300/30 rounded-xl border border-purple-500/20">
+                    <h4 className={`text-2xl ${fontStyles.heading} text-purple-400 mb-6`}>
+                      Project Details
+                    </h4>
                     <div className="flex items-center gap-3">
                       <FiCalendar className="text-purple-400" />
                       <div>
@@ -201,19 +294,31 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* Project Overview */}
-                  <div className="mt-6">
-                    <h5 className={`text-lg ${fontStyles.heading} text-purple-400 mb-3`}>
-                      Overview
-                    </h5>
-                    <p className="text-white/80 leading-relaxed">
-                      {selectedProject.details.purpose} This project showcases advanced full-stack
-                      development capabilities including API design, database management, and modern
-                      UI implementation. The system features secure authentication, real-time analytics,
-                      and responsive design principles.
-                    </p>
-                  </div>
+
+
+
+
+
+
+
+
+
+
+
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 {/* Image Gallery */}
                 <div className="mt-8">
@@ -223,7 +328,7 @@ const Projects = () => {
 
                   <div
                     onClick={() => setZoomedImage(ss.path)}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-[minmax(200px,auto)]">
+                    className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-[minmax(200px,auto)]">
                     {selectedProject.screenshots.map((ss, index) => {
                       const isPortrait = ss.orientation === 'P';
                       return (
@@ -247,7 +352,7 @@ const Projects = () => {
                             src={ss.path}
                             alt={`Screenshot ${index + 1}`}
                             fill
-                            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                            className="object-cover object-top w-full h-full transition-transform duration-300 group-hover:scale-105"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                           />
 
@@ -278,6 +383,8 @@ const Projects = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      
       {zoomedImage && (
         <div className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4">
           <Image

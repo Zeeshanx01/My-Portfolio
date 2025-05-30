@@ -214,6 +214,13 @@ const About = () => {
           </div>
         </motion.div>
 
+
+
+
+
+
+
+
         {/* Modal Dialog */}
         <AnimatePresence>
           {isModalOpen && (
