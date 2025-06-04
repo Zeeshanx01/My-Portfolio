@@ -30,7 +30,7 @@ const ProjectDetails = ({ project, onClose }) => {
       onClick={onClose}
     >
       <motion.div
-        className="relative max-w-[95rem] w-full bg-slate-900/40 border border-purple-500/30 rounded-xl md:p-8 max-md:px-1 max-md:py-6 max-h-[90vh] overflow-y-auto"
+        className="relative max-w-[95rem] w-full bg-slate-900/0 border border-purple-500/30 rounded-xl md:p-8 max-md:px-1 max-md:py-6 max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
         initial={{ scale: 0.95 }}
         animate={{ scale: 1 }}

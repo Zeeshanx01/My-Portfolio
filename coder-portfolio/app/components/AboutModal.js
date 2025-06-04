@@ -10,18 +10,18 @@ const AboutModal = ({ isOpen, onClose, fontStyles }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 max-sm:p-1 bg-black/50 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div
-            className="max-w-3xl w-full bg-black/90 border-2 border-purple-500/30 rounded-2xl p-8 max-md:p-6"
+            className="max-w-3xl w-full max-h-[68vh] overflow-auto bg-black/90 border-2 border-purple-500/30 rounded-2xl p-8 max-md:p-6 max-sm:p-3"
             onClick={e => e.stopPropagation()}
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.9 }}
           >
             <div className="flex justify-between items-center mb-6">
-              <h3 className={`text-2xl ${fontStyles.heading} text-purple-400`}>My Journey</h3>
+              <h3 className={`text-2xl ${fontStyles.heading} text-purple-400 px-4 pt-2`}>My Journey</h3>
               <button
                 onClick={onClose}
                 className="text-white/60 hover:text-white transition-colors"

@@ -72,7 +72,7 @@ const Projects = () => {
         {projectsData.map((project) => (
           <motion.div
             key={project.id}
-            className="relative rounded-xl backdrop-blur-sm bg-slate-900/60 overflow-hidden border border-purple-500/20 hover:border-purple-500/40 transition-all cursor-pointer"
+            className="relative rounded-xl backdrop-blur-sm bg-slate-900/0 overflow-hidden border border-purple-500/20 hover:border-purple-500/40 transition-all cursor-pointer"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             onClick={() => setSelectedProject(project)}
