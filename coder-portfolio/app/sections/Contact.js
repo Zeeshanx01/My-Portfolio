@@ -1,32 +1,107 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+'use client';
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
   body: "font-['Inter'] font-light",
   mono: "font-['Fira_Code']"
-}
+};
 
 const Contact = () => {
+  const formRef = useRef(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = formRef.current;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/zeeshan.x01000@gmail.com', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (data.success === 'true') {
+        toast.success('Message sent successfully!', {
+          style: {
+            background: '#1f1f1f',
+            color: '#d8b4fe',
+            border: '1px solid #a855f7',
+            fontFamily: 'var(--font-fira-code)',
+          },
+          iconTheme: {
+            primary: '#a855f7',
+            secondary: '#1f1f1f',
+          },
+        });
+        form.reset();
+      } else {
+        toast.error('Something went wrong. Try again!', {
+          style: {
+            background: '#1f1f1f',
+            color: '#ffb4b4',
+            border: '1px solid #ff4f4f',
+            fontFamily: 'var(--font-fira-code)',
+          },
+          iconTheme: {
+            primary: '#ff4f4f',
+            secondary: '#1f1f1f',
+          },
+        });
+      }
+    } catch (err) {
+      toast.error('Error submitting form');
+    }
+  };
+
   return (
-    <div>
-      <section id="contact" className="min-h-screen py-20 px-4">
+    <section id="contact" className="min-h-screen py-20 px-4">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-16">
+
+
+        {/* Form */}
         <motion.div
-          className="max-w-2xl mx-auto backdrop-blur-xl bg-black/30 p-12 rounded-3xl border-2 border-purple-500/30"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          className="w-full md:w-1/2 backdrop-blur-sm bg-black/30 p-10 rounded-3xl border-2 border-purple-500/30"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
         >
           <motion.h2
-            className={`text-4xl ${fontStyles.heading} text-purple-400 mb-8`}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            className={`text-4xl ${fontStyles.heading} text-purple-400 mb-2`}
           >
             &lt;Contact/&gt;
           </motion.h2>
 
-          <form className="space-y-6">
+
+
+          {/* Illustration */}
+          <motion.div
+            className="w-full md:w-1/2 py-10 flex justify-center"
+            // initial={{ opacity: 0, x: -50 }}
+            // whileInView={{ opacity: 1, x: 0 }}
+            // transition={{ duration: 0.7 }}
+          >
+            <img
+              src="/contact/undraw_personal-text_090t.svg"
+              alt="Contact Illustration"
+              className="w-[90%] max-sm:w-[70%] max-w-md"
+            />
+          </motion.div>
+
+
+
+
+          <p className={`${fontStyles.body} text-white/70 mb-8 `}>
+            Feel free to reach out for collaborations or just a friendly hello!
+            I'll get back to you as soon as I can.
+          </p>
+
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             {['Name', 'Email', 'Message'].map((field, index) => (
               <motion.div
                 key={field}
@@ -38,19 +113,21 @@ const Contact = () => {
                 <label className={`block text-white/80 ${fontStyles.mono}`}>
                   Your {field}
                 </label>
-                <motion.div whileHover={{ y: -2 }}>
-                  {field === 'Message' ? (
-                    <textarea
-                      rows="5"
-                      className="w-full bg-black/40 border-2 border-purple-500/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20"
-                    />
-                  ) : (
-                    <input
-                      type={field === 'Email' ? 'email' : 'text'}
-                      className="w-full bg-black/40 border-2 border-purple-500/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20"
-                    />
-                  )}
-                </motion.div>
+                {field === 'Message' ? (
+                  <textarea
+                    name="message"
+                    required
+                    rows="5"
+                    className="w-full bg-black/40 border-2 border-purple-500/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20"
+                  />
+                ) : (
+                  <input
+                    type={field === 'Email' ? 'email' : 'text'}
+                    name={field.toLowerCase()}
+                    required
+                    className="w-full bg-black/40 border-2 border-purple-500/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20"
+                  />
+                )}
               </motion.div>
             ))}
 
@@ -68,10 +145,14 @@ const Contact = () => {
               />
             </motion.button>
           </form>
-        </motion.div>
-      </section>
-    </div>
-  )
-}
 
-export default Contact
+          <p className="text-center mt-6 text-purple-300 text-sm">
+            I’ll contact you shortly. Thanks for taking the time!
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;

@@ -64,7 +64,7 @@ const About = () => {
     <div>
       <section id="about" className="min-h-screen mx-auto py-32">
         <motion.div
-          className="max-w-6xl w-[90%] max-sm:w-full mx-auto backdrop-blur-sm bg-black/10 p-12 max-md:p-6 rounded-3xl border max-sm:border-none border-purple-500/30"
+          className="max-w-6xl w-[90%] max-sm:w-full mx-auto backdrop-blur-sm max-sm:backdrop-blur-none bgblack/10 p-12 max-md:p-6 rounded-3xl border max-sm:border-none border-purple-500/30"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
         >
@@ -105,10 +105,10 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
             >
               {[
-                { label: 'Projects Completed', value: '10+' },
+                { label: 'Portfolio Projects Completed', value: '6+' },
                 { label: 'Years Learning', value: '2+' },
                 { label: 'Technologies', value: '8+' },
-                { label: 'Happy Clients', value: '5+' }
+                // { label: 'Happy Clients', value: '5+' }
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}

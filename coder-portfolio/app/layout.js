@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from 'react-hot-toast';
+
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/next';
 
@@ -46,11 +48,11 @@ export default function RootLayout({ children }) {
         {/* 
         // 
          */}
-
+        <Toaster position="top-right" />
         {children}
         <SpeedInsights />
         <Analytics />
-        
+
       </body>
     </html>
   );

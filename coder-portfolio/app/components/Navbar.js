@@ -167,7 +167,9 @@ const Navbar = () => {
                 animate={{ scale: 1 }}
                 className="mb-8"
               >
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4" />
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4 overflow-hidden" >
+                  <img src="/Hero/profile.jpg" alt="" />
+                </div>
                 <h1 className={`text-2xl ${fontStyles.heading} text-white`}>
                   Zeeshan
                 </h1>

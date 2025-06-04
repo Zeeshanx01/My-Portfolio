@@ -9,33 +9,33 @@ const fontStyles = {
 }
 
 const techStack = [
-  { 
-    name: 'Next.js', 
-    icon: SiNextdotjs, 
+  {
+    name: 'Next.js',
+    icon: SiNextdotjs,
     color: 'text-white',
     url: 'https://nextjs.org'
   },
-  { 
-    name: 'Tailwind CSS', 
-    icon: SiTailwindcss, 
+  {
+    name: 'Tailwind CSS',
+    icon: SiTailwindcss,
     color: 'text-cyan-400',
     url: 'https://tailwindcss.com'
   },
-  { 
-    name: 'shadcn/ui', 
-    icon: SiShadcnui, 
+  {
+    name: 'shadcn/ui',
+    icon: SiShadcnui,
     color: 'text-purple-400',
     url: 'https://ui.shadcn.com'
   },
-  { 
-    name: 'Clerk', 
-    icon: SiClerk, 
+  {
+    name: 'Clerk',
+    icon: SiClerk,
     color: 'text-blue-400',
     url: 'https://clerk.com'
   },
-  { 
-    name: 'Stream', 
-    icon: SiStreamlit, 
+  {
+    name: 'Stream',
+    icon: SiStreamlit,
     color: 'text-green-400',
     url: 'https://getstream.io'
   }
@@ -88,12 +88,12 @@ const Hero = () => {
               {/* A frontend specialist passionate about building beautiful, responsive, and user-friendly web applications using modern technologies and best practices. */}
               {/* A frontend specialist dedicated to crafting visually stunning, responsive, and intuitive web applications with cutting-edge technologies and industry standards. */}
               {/* A frontend specialist dedicated to creating visually appealing, highly responsive, and user-centric web applications leveraging modern technologies and industry best practices. */}
-              
+
               A frontend specialist passionate about creating visually appealing, highly responsive, and user-centric web applications leveraging modern technologies and industry best practices.
             </motion.p>
 
             {/* Tech Stack */}
-            <motion.div 
+            <motion.div
               className="flex flex-wrap gap-4 mb-8"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -117,7 +117,7 @@ const Hero = () => {
             </motion.div>
 
             {/* CTA Buttons */}
-            <motion.div 
+            <motion.div
               className="flex gap-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -143,21 +143,45 @@ const Hero = () => {
 
           {/* Right side - Animated illustration or pattern */}
           <motion.div
-            className="relative h-[500px] hidden lg:block"
+            className="relative h-[500px] max-sm:h-[450px]"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-3xl blur-3xl" />
-            <div className="relative h-full w-full bg-black/30 backdrop-blur-sm rounded-3xl border-2 border-purple-500/30 p-8">
-              <div className="h-full w-full bg-[url('/grid.svg')] opacity-10" />
+
+
+
+
+            <div className="relative h-full w-full bg-black/30 backdrop-blur-sm rounded-3xl border-2 border-purple-500/30 p-0">
+
+
+
+              {/* <div className="h-full w-full bg-[url('/Hero/cover.jpg')] opacity-10 object-cover object-top" /> */}
+
+              <div className="h-full w-full opacity-10 object-cover objecttop overflow-hidden" >
+                <img className='blur-sm' src="/Hero/cover.jpg" alt="" />
+              </div>
+
               <motion.div
                 className="absolute inset-0 flex items-center justify-center"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              // animate={{ rotate: 360 }}
+              // transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
-                <div className="w-64 h-64 border-2 border-purple-500/30 rounded-full" />
+
+                {/* <div className="w-64 h-64 border-2 border-purple-500/30 rounded-full bg-[url('/Hero/cover.jpg')]" /> */}
+
+                <div className="w-64 h-64 border-2 border-purple-500/30 rounded-full overflow-hidden backdrop:blur-sm">
+                  <img src="/Hero/cover.jpg" alt="" />
+                </div>
+
               </motion.div>
+
+
             </div>
+
+
+
+
           </motion.div>
         </div>
       </section>
