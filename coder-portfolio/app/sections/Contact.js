@@ -98,7 +98,7 @@ const Contact = () => {
 
           <p className={`${fontStyles.body} text-white/70 mb-8 `}>
             Feel free to reach out for collaborations or just a friendly hello!
-            I'll get back to you as soon as I can.
+            I'll get back to you as soon as I can
           </p>
 
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
@@ -108,7 +108,7 @@ const Contact = () => {
                 className="space-y-2"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <label className={`block text-white/80 ${fontStyles.mono}`}>
                   Your {field}
