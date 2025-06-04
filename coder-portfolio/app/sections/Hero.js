@@ -69,7 +69,7 @@ const Hero = () => {
               className={`text-7xl ${fontStyles.heading} text-white mb-6`}
               initial={{ letterSpacing: '-0.05em' }}
               whileInView={{ letterSpacing: '0em' }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.4 }}
             >
               Zeeshan.
             </motion.h1>

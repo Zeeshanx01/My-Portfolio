@@ -2,8 +2,8 @@
 import { useState, useEffect, Suspense } from 'react'
 import dynamic from 'next/dynamic'
 // ... other imports ...
-import UnderConstruction from "./components/UnderConstruction"
-import LoadingScreen from "./components/LoadingScreen"
+// import UnderConstruction from "./components/UnderConstruction"
+// import LoadingScreen from "./components/LoadingScreen"
 
 
 
@@ -49,7 +49,7 @@ export default function Home() {
     // Simulate loading time for components
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 1500) // Reduced loading time
+    }, 0) // Reduced loading time
 
     return () => clearTimeout(timer)
   }, [])
