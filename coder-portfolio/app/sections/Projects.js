@@ -190,11 +190,11 @@ const Projects = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center md:p-4 max-md:h-full"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
-              className="relative max-w-[95rem] w-full bg-black border border-purple-500/30 rounded-xl p-8 max-h-[90vh] overflow-y-auto"
+              className="relative max-w-[95rem] w-full bg-black border border-purple-500/30 rounded-xl md:p-8 max-md:px-1 max-md:py-6 max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
