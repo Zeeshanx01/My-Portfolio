@@ -110,6 +110,38 @@ export default function Home() {
             <Suspense fallback={<div className="h-screen" />}>
               <Contact />
             </Suspense>
+                        <style jsx global>{`
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 8px;
+          background: #0f0f0f;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #8d47cf;
+          border-radius: 4px;
+        }
+        .masonry-column {
+        background-clip: padding-box;
+        width: 100% !important;
+      }
+            @supports (grid-template-rows: masonry) {
+      .auto-rows-[minmax(200px,auto)] {
+        grid-template-rows: masonry;
+      }
+    }
+    
+    .grid {
+      grid-auto-flow: dense;
+    }
+
+    @container/image-group (min-width: 300px) {
+      .row-span-2 {
+        grid-row: span 2;
+      }
+    }
+
+    
+      `}</style>
           </main>
         </>
       )}
