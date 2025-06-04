@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { FiX, FiCalendar, FiGithub, FiUser, FiBriefcase, FiInfo } from 'react-icons/fi';
+import { FiX, FiCalendar, FiGithub, FiUser, FiBriefcase, FiInfo, FiArrowLeft } from 'react-icons/fi';
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
@@ -52,7 +52,7 @@ const ProjectDetails = ({ project, onClose }) => {
               alt={project.title}
               fill
               className="object-cover object-top"
-              
+
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
           </div>
@@ -196,33 +196,49 @@ const ProjectDetails = ({ project, onClose }) => {
                   </motion.div>
                 );
               })}
+
+
+
+
+
+            </div>
+            {/* Back Button */}
+            <div className="mt-8 flex justify-center">
+              <button
+
+                onClick={onClose}
+                className="flex items-center gap-2 px-6 py-3 bg-purple-500/20 hover:bg-purple-500/30 rounded-full border border-purple-500/30 transition-all"
+              >
+                <FiArrowLeft className="text-purple-300" />
+                <span className="text-purple-300">Back to Projects</span>
+              </button>
             </div>
           </div>
         </div>
 
-      <AnimatePresence>
-        {zoomedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4"
-          >
-            <Image
-              src={zoomedImage}
-              alt="Zoomed view"
-              fill
-              className="object-contain"
-            />
-            <button
-              className="absolute top-4 right-4 text-white"
-              onClick={() => setZoomedImage(null)}
+        <AnimatePresence>
+          {zoomedImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4"
             >
-              <FiX size={32} />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <Image
+                src={zoomedImage}
+                alt="Zoomed view"
+                fill
+                className="object-contain"
+              />
+              <button
+                className="absolute top-4 right-4 text-white"
+                onClick={() => setZoomedImage(null)}
+              >
+                <FiX size={32} />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
     </motion.div>

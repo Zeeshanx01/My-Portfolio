@@ -20,8 +20,8 @@ const projectsData = [
     description: "URL shortening tool demonstration",
     tech: ["Next.js", "Node.js", "MongoDB", "TailwindCSS"],
     image: "/projects/linktweak/linktweak-01.png",
-    liveUrl: "#",
-    repoUrl: "#",
+    liveUrl: "https://link-tweak.vercel.app/",
+    repoUrl: "https://github.com/Zeeshanx01/LinkTweak",
     details: {
       timeline: "Feb 2024 - Apr 2024",
       role: "Full-stack Developer",

@@ -204,7 +204,8 @@ const Navbar = () => {
               {/* Mobile Social Links */}
               <div className="mt-8 mb-12 space-y-3">
                 <motion.a
-                  href="#"
+                  href="https://github.com/Zeeshanx01"
+                  target="_blank"
                   className="flex items-center gap-3 text-gray-400 hover:text-purple-400 text-lg"
 
                 >
@@ -269,10 +270,16 @@ const Navbar = () => {
             animate={{ scale: 1 }}
             className="mb-12"
           >
+
+
             <motion.div
-              whileHover={{ rotate: 5, scale: 1.05 }}
-              className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4"
-            />
+
+              whileHover={{ rotate: 0, scale: 1.05 }}
+              className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4 overflow-hidden" >
+              <img src="/Hero/profile.jpg" alt="" />
+            </motion.div>
+
+
             <motion.h1
               className={`text-2xl ${fontStyles.heading} text-white`}
               whileHover={{ x: 5 }}
@@ -317,7 +324,8 @@ const Navbar = () => {
             transition={{ delay: 0.5 }}
           >
             <motion.a
-              href="#"
+              href="https://github.com/Zeeshanx01"
+              target="_blank"
               className="flex items-center gap-2 text-gray-400 hover:text-purple-400"
               whileHover={{ x: 5 }}
             >
