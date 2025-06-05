@@ -234,7 +234,7 @@ const Navbar = () => {
         animate={{ y: isScrollingDown ? 100 : 0 }}
         transition={{ type: 'spring', stiffness: 300 }}
       >
-        <div className="flex justify-around p-4">
+        <div className="flex justify-around p-4 mr-10">
           <a
             href="#contact"
             className="px-6 py-2 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium flex items-center gap-2"

@@ -87,7 +87,7 @@ const Contact = () => {
             // transition={{ duration: 0.7 }}
           >
             <img
-              src="/contact/undraw_personal-text_090t.svg"
+              src="/Contact/undraw_personal-text_090t.svg"
               alt="Contact Illustration"
               className="w-[90%] max-sm:w-[70%] max-w-md"
             />
