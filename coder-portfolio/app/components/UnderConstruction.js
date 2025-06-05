@@ -8,13 +8,26 @@ export default function UnderConstruction() {
   const [isVisible, setIsVisible] = useState(true)
   const router = useRouter()
 
+  // const handleBack = () => {
+  //   if (window.history.length > 1) {
+  //     router.back()
+  //   } else {
+  //     router.push('/')
+  //   }
+  // }
+
+
+
+
   const handleBack = () => {
-    if (window.history.length > 1) {
-      router.back()
-    } else {
-      router.push('/')
-    }
+
+      setIsVisible(false)
   }
+
+
+
+
+
 
   return (
     <AnimatePresence>
@@ -120,7 +133,7 @@ export default function UnderConstruction() {
                 Portfolio in Development
               </h2>
               <p className="text-gray-300 mb-6 text-center leading-relaxed">
-                Welcome to my portfolio website. I'm currently refining and enhancing the experience to better showcase my work and skills. Please check back soon for the complete version.
+                Welcome to my portfolio website. I'm currently refining and enhancing the experience to better showcase my work and skills. You're welcome to explore what's already available!
               </p>
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -128,7 +141,7 @@ export default function UnderConstruction() {
                 onClick={handleBack}
                 className="w-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 text-white py-3 px-6 rounded-lg transition-all duration-300 font-medium shadow-lg shadow-purple-500/20"
               >
-                Go Back
+                Continue to website
               </motion.button>
             </div>
           </motion.div>

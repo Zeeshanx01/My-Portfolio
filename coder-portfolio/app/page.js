@@ -2,7 +2,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import dynamic from 'next/dynamic'
 // ... other imports ...
-// import UnderConstruction from "./components/UnderConstruction"
+import UnderConstruction from "./components/UnderConstruction"
 // import LoadingScreen from "./components/LoadingScreen"
 
 
@@ -56,7 +56,7 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen b-black bg-opacity-20 text-gray-300 ${fontStyles.body}`}>
-      {/* <UnderConstruction /> */}
+      <UnderConstruction />
       {isLoading ? (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center">
           <div className="w-8 h-8 border-2 border-purple-500/20 border-t-purple-500 rounded-full animate-spin" />
