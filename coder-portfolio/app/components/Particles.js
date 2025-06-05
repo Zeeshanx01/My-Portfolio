@@ -23,7 +23,7 @@ const Particles = () => {
 
     // Particles setup
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 1000;
+    const particlesCount = 350;
 
     const posArray = new Float32Array(particlesCount * 3);
     for (let i = 0; i < particlesCount * 3; i++) {
@@ -33,7 +33,7 @@ const Particles = () => {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.02,
+      size: 0.03,
       color: '#7D3CFF',
       transparent: true,
       opacity: 0.8,

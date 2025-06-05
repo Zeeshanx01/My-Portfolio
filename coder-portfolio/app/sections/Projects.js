@@ -1,90 +1,157 @@
-import React from 'react'
-import { motion} from 'framer-motion'
+// components/Projects.js
+'use client';
 
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { FiInfo, FiGithub } from 'react-icons/fi';
+import ProjectDetails from '../components/ProjectDetails';
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
   body: "font-['Inter'] font-light",
   mono: "font-['Fira_Code']"
-}
+};
 
+const projectsData = [
+  {
+    id: 1,
+    title: "LinkTweak (Portfolio Project)",
+    description: "URL shortening tool demonstration",
+    tech: ["Next.js", "Node.js", "MongoDB", "TailwindCSS"],
+    image: "/projects/linktweak/linktweak-01.png",
+    liveUrl: "https://link-tweak.vercel.app/",
+    repoUrl: "https://github.com/Zeeshanx01/LinkTweak",
+    details: {
+      timeline: "Feb 2024 - Apr 2024",
+      role: "Full-stack Developer",
+      client: "Personal Project",
+      status: "Completed",
+      purpose: "Demonstrates full-stack development capabilities with modern web technologies",
+      features: [
+        "Custom URL shortening",
+        "Analytics dashboard",
+        "User authentication",
+        "QR code generation"
+      ]
+    },
+    screenshots: [
+      { path: "/projects/linktweak/linktweak-02.png", orientation: "L" },
+      { path: "/projects/linktweak/linktweak-08.jpg", orientation: "P" },
+      { path: "/projects/linktweak/linktweak-03.png", orientation: "L" },
+      { path: "/projects/linktweak/linktweak-04.png", orientation: "L" },
+      { path: "/projects/linktweak/linktweak-05.png", orientation: "L" },
+      { path: "/projects/linktweak/linktweak-06.png", orientation: "L" },
+      { path: "/projects/linktweak/linktweak-09.jpg", orientation: "P" },
+      { path: "/projects/linktweak/linktweak-07.png", orientation: "L" },
+    ]
+  }
+];
+
+const PortfolioBadge = () => (
+  <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-500/30 text-purple-300 text-sm">
+    <FiInfo className="text-xs" />
+    <span>Portfolio Demonstration</span>
+  </div>
+);
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   return (
-    <div>
-      <section id="projects" className="min-h-screen py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className={`text-4xl ${fontStyles.heading} text-purple-400 mb-12 text-center`}
+    <section id="projects" className="min-h-screen py-20 px-4">
+      <motion.h2
+        className={`text-4xl ${fontStyles.heading} text-purple-400 mb-12 text-center`}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+      >
+        &lt;Projects/&gt;
+      </motion.h2>
+
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
+        {projectsData.map((project) => (
+          <motion.div
+            key={project.id}
+            className="relative rounded-xl backdrop-blur-sm bg-slate-900/0 overflow-hidden border border-purple-500/20 hover:border-purple-500/40 transition-all cursor-pointer"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
+            onClick={() => setSelectedProject(project)}
           >
-            &lt;Projects/&gt;
-          </motion.h2>
+            <PortfolioBadge />
+            <div className="relative h-64 bg-black/50">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+            </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {[1, 2, 3, 4].map((project, index) => (
-              <motion.div
-                key={project}
-                className="group relative h-96 bg-black/30 backdrop-blur-sm border-2 border-purple-500/20 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all"
-                initial={{ x: index % 2 === 0 ? -50 : 50, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                transition={{ delay: index * 0.2, type: 'spring' }}
+
+
+
+
+
+
+            <div className="p-6 bg-gradient-to-b from-black/80 to-purple-900/5">
+              <h3 className={`text-2xl ${fontStyles.heading} text-purple-300 mb-2`}>
+                {project.title}
+              </h3>
+              <p className="text-white/80">{project.description}</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {project.tech.map((tech) => (
+                  <span key={tech} className="px-3 py-1 text-sm bg-purple-500/10 text-purple-300 rounded-full border border-purple-500/20">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+
+
+            <div className=" px-6 pb-6 flex gap-3">
+              {/* Live Button */}
+              <a
+                href={project.liveUrl}
+                className="flex items-center gap-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-full border border-red-500/30 transition-all"
+                target="_blank"
               >
-                <div className="absolute inset-0 bg-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+                </span>
+                <span className="text-red-300">Live</span>
+              </a>
 
-                <motion.div
-                  className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"
-                  animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
-                  transition={{ duration: 20, repeat: Infinity }}
-                />
+              {/* Source Button */}
+              <a
+                href={project.repoUrl}
+                className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full border border-white/10 transition-all"
+                target="_blank"
+              >
+                <FiGithub className="text-white/80" />
+                <span className="text-white/80">Source</span>
+              </a>
+            </div>
 
-                <div className="p-8 relative z-10">
-                  <motion.div
-                    className="text-purple-400 text-2xl mb-4 flex items-center gap-3"
-                    whileHover={{ x: 5 }}
-                  >
-                    <span className="text-white/50">0{index + 1}.</span>
-                    Project {project}
-                  </motion.div>
 
-                  <motion.p
-                    className="text-white/80 mb-4"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                  >
-                    Advanced web application with modern tech stack implementation
-                  </motion.p>
 
-                  <motion.div
-                    className="flex gap-2 flex-wrap"
-                    initial={{ scale: 0.9 }}
-                    whileInView={{ scale: 1 }}
-                  >
-                    {['React', 'Next.js', 'Node.js'].map((tech) => (
-                      <motion.span
-                        key={tech}
-                        className="px-3 py-1 text-sm bg-purple-500/20 text-purple-300 rounded-full"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </motion.div>
-                </div>
 
-                <motion.div
-                  className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-bl from-purple-500/20 to-transparent rounded-tl-full"
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 20, repeat: Infinity }}
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  )
-}
+          </motion.div>
+        ))}
+      </div>
 
-export default Projects
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectDetails
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </AnimatePresence>
+    </section>
+  );
+};
+
+export default Projects;

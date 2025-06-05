@@ -15,14 +15,14 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrollingDown, setIsScrollingDown] = useState(false)
 
-  const sections = ['home', 'about', 'skills', 'projects', 'contact']
+  const sections = ['home', 'about', 'skills', 'techstack', 'projects', 'contact']
 
   const [activeSection, setActiveSection] = useState('home')
 
 
 
   const lastScrollY = useRef(0)
-  
+
   // Mobile menu toggle
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -30,51 +30,51 @@ const Navbar = () => {
   }
 
 
-  
-    // Update the scroll detection useEffect
-    useEffect(() => {
-      const handleScroll = () => {
-        const threshold = 150; // Adjust this value based on your needs
-        const offsets = sections.map(section => {
-          const el = document.getElementById(section);
-          return el ? el.getBoundingClientRect().top + window.scrollY - threshold : 0;
-        });
-  
-        const scrollPosition = window.scrollY + window.innerHeight / 2;
-  
-        let currentSection = 'home';
-        for (let i = sections.length - 1; i >= 0; i--) {
-          if (scrollPosition >= offsets[i]) {
-            currentSection = sections[i];
-            break;
-          }
+
+  // Update the scroll detection useEffect
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = 150; // Adjust this value based on your needs
+      const offsets = sections.map(section => {
+        const el = document.getElementById(section);
+        return el ? el.getBoundingClientRect().top + window.scrollY - threshold : 0;
+      });
+
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      let currentSection = 'home';
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (scrollPosition >= offsets[i]) {
+          currentSection = sections[i];
+          break;
         }
-  
-        setActiveSection(currentSection);
-      };
-  
-      // Add event listeners
-      window.addEventListener('scroll', handleScroll);
-      window.addEventListener('resize', handleScroll);
-  
-      // Initial call
-      handleScroll();
-  
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('resize', handleScroll);
-      };
-    }, []);
-  
-    // Add click handler for mobile menu links
-    const handleNavClick = (section) => {
-      setActiveSection(section);
-      if (window.innerWidth < 1024) { // lg breakpoint
-        setIsMenuOpen(false);
       }
+
+      setActiveSection(currentSection);
     };
-  
-  
+
+    // Add event listeners
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+
+    // Initial call
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
+
+  // Add click handler for mobile menu links
+  const handleNavClick = (section) => {
+    setActiveSection(section);
+    if (window.innerWidth < 1024) { // lg breakpoint
+      setIsMenuOpen(false);
+    }
+  };
+
+
 
 
 
@@ -96,7 +96,7 @@ const Navbar = () => {
 
   return (
     <div>
-      
+
       {/* Mobile Navigation */}
       <motion.nav
         className="fixed lg:hidden bottom-4 right-4 z-50"
@@ -167,7 +167,9 @@ const Navbar = () => {
                 animate={{ scale: 1 }}
                 className="mb-8"
               >
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4" />
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4 overflow-hidden" >
+                  <img src="/Hero/profile.jpg" alt="" />
+                </div>
                 <h1 className={`text-2xl ${fontStyles.heading} text-white`}>
                   Zeeshan
                 </h1>
@@ -202,7 +204,8 @@ const Navbar = () => {
               {/* Mobile Social Links */}
               <div className="mt-8 mb-12 space-y-3">
                 <motion.a
-                  href="#"
+                  href="https://github.com/Zeeshanx01"
+                  target="_blank"
                   className="flex items-center gap-3 text-gray-400 hover:text-purple-400 text-lg"
 
                 >
@@ -231,7 +234,7 @@ const Navbar = () => {
         animate={{ y: isScrollingDown ? 100 : 0 }}
         transition={{ type: 'spring', stiffness: 300 }}
       >
-        <div className="flex justify-around p-4">
+        <div className="flex justify-around p-4 mr-10">
           <a
             href="#contact"
             className="px-6 py-2 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium flex items-center gap-2"
@@ -267,10 +270,16 @@ const Navbar = () => {
             animate={{ scale: 1 }}
             className="mb-12"
           >
+
+
             <motion.div
-              whileHover={{ rotate: 5, scale: 1.05 }}
-              className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4"
-            />
+
+              whileHover={{ rotate: 0, scale: 1.05 }}
+              className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4 overflow-hidden" >
+              <img src="/Hero/profile.jpg" alt="" />
+            </motion.div>
+
+
             <motion.h1
               className={`text-2xl ${fontStyles.heading} text-white`}
               whileHover={{ x: 5 }}
@@ -315,7 +324,8 @@ const Navbar = () => {
             transition={{ delay: 0.5 }}
           >
             <motion.a
-              href="#"
+              href="https://github.com/Zeeshanx01"
+              target="_blank"
               className="flex items-center gap-2 text-gray-400 hover:text-purple-400"
               whileHover={{ x: 5 }}
             >
