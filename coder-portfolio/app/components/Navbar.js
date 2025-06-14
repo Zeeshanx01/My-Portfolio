@@ -1,6 +1,11 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaCode, FaStackOverflow } from 'react-icons/fa';
+
+
+
+
 
 
 const fontStyles = {
@@ -10,16 +15,26 @@ const fontStyles = {
 }
 
 
+
+
+
+
 const Navbar = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrollingDown, setIsScrollingDown] = useState(false)
-
   const sections = ['home', 'about', 'skills', 'techstack', 'projects', 'contact']
-
   const [activeSection, setActiveSection] = useState('home')
+  const currentYear = new Date().getFullYear();
 
 
+  const handleRedirect = () => {
+    window.open("https://github.com/Zeeshanx01", "_blank", "noopener,noreferrer");
+  };
+
+  const handleSourceCode = () => {
+    window.open("https://github.com/Zeeshanx01/LinkTweak", "_blank", "noopener,noreferrer");
+  };
 
   const lastScrollY = useRef(0)
 
@@ -66,6 +81,14 @@ const Navbar = () => {
     };
   }, []);
 
+
+
+
+
+
+
+
+
   // Add click handler for mobile menu links
   const handleNavClick = (section) => {
     setActiveSection(section);
@@ -94,10 +117,55 @@ const Navbar = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div>
 
-      {/* Mobile Navigation */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* Mobile Navigation Menu Button */}
       <motion.nav
         className="fixed lg:hidden bottom-4 right-4 z-50"
         // initial={{ scale: 0 }}
@@ -150,6 +218,11 @@ const Navbar = () => {
 
 
 
+
+
+
+
+
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
@@ -168,7 +241,8 @@ const Navbar = () => {
                 className="mb-8"
               >
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4 overflow-hidden" >
-                  <img src="/Hero/profile.jpg" alt="" />
+                  {/* <img src="/Hero/profile.jpg" alt="" /> */}
+                  <img src={process.env.NEXT_PUBLIC_PROFILE_PIC} alt="" />
                 </div>
                 <h1 className={`text-2xl ${fontStyles.heading} text-white`}>
                   Zeeshan
@@ -201,25 +275,113 @@ const Navbar = () => {
                 ))}
               </div>
 
-              {/* Mobile Social Links */}
-              <div className="mt-8 mb-12 space-y-3">
-                <motion.a
-                  href="https://github.com/Zeeshanx01"
-                  target="_blank"
-                  className="flex items-center gap-3 text-gray-400 hover:text-purple-400 text-lg"
 
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    {/* GitHub SVG */}
-                  </svg>
-                  GitHub
-                </motion.a>
-                {/* Add other social links */}
+
+
+
+
+              {/* Mobile Social Links */}
+              <div
+                className="mt-8 mb-12 space-y-3"
+
+              >
+
+
+
+
+                {/* Github Button */}
+                <div className="duration-500 flex space-x-4 py-2">
+
+                  <button
+                    onClick={handleRedirect}
+                    className="duration-500 bg-gradient-to-br from-gray-800/60 to-gray-700/60 rounded-full px-6 py-3 hover:from-gray-700/60 hover:to-gray-800/60 transition-all hover:shadow-glow flex items-center space-x-2 relative overflow-hidden group"
+                  >
+                    <FaGithub className="duration-500 h-6 w-6 group-hover:rotate-45 transition-transform" />
+                    <span className="duration-500 text-sm group-hover:translate-x-1 transition-transform">Visit Github</span>
+                    <span className="duration-500 absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  </button>
+
+
+                </div>
+
+
+
+
+
+                {/* Glowing Social Links */}
+                <div className="duration-500 flex space-x-6">
+                  <a
+                    href="https://linkedin.com/in/zeeshan-munir-b073a51b9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="duration-300 text-gray-400 hover:text-[#0A66C2] transition-colors 
+                          p-2 rounded-full bg-gray-800 hover:bg-gray-700 hover:shadow-glow"
+                  >
+                    <FaLinkedin className="duration-100 h-6 w-6" />
+                  </a>
+
+                  <a
+                    href="mailto:zeeshan.x01000@gmail.com"
+                    className="duration-300 text-gray-400 hover:text-white transition-colors
+                          p-2 rounded-full bg-gray-800 hover:bg-gray-700 hover:shadow-glow"
+                  >
+                    <FaEnvelope className="duration-100 h-6 w-6" />
+                  </a>
+
+                  <a
+                    href="https://stackoverflow.com/users/20757870/zeeshan-munir"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="duration-300 text-gray-400 hover:text-orange-500 transition-colors
+                          p-2 rounded-full bg-gray-800 hover:bg-gray-700 hover:shadow-glow"
+                  >
+                    <FaStackOverflow className="duration-100 h-6 w-6" />
+                  </a>
+
+                  <a
+                    href="https://instagram.com/zeeshan_x01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="duration-300 text-gray-400 hover:text-pink-500 transition-colors
+                          p-2 rounded-full bg-gray-800 hover:bg-gray-700 hover:shadow-glow"
+                  >
+                    <FaInstagram className="duration-100 h-6 w-6" />
+                  </a>
+                </div>
+
+
+
+
+
+
+                {/* Copyright */}
+                <div className="duration-300 border-t border-gray-800 pt-4 pb-0 text-center">
+                  <p className="duration-300 text-xs text-gray-400 hover:text-indigo-400 transition-colors">
+                    &copy; {currentYear} Zeeshan Munir. All rights reserved.
+                  </p>
+                  <p className="duration-300 mt-1 text-xs text-gray-400 hover:text-purple-400 transition-colors">
+                    Built with ❤️ using NextJS, Tailwind CSS, and Framer Motion.
+                  </p>
+                </div>
+
+
+
+
+
               </div>
+
+
+
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+
+
+
+
+
 
 
 
@@ -254,6 +416,26 @@ const Navbar = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       {/* Existing Desktop Navigation */}
       <motion.nav
         initial={{ x: -100 }}
@@ -276,7 +458,9 @@ const Navbar = () => {
 
               whileHover={{ rotate: 0, scale: 1.05 }}
               className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4 overflow-hidden" >
-              <img src="/Hero/profile.jpg" alt="" />
+              {/* <img src="/Hero/profile.jpg" alt="" /> */}
+              <img src={process.env.NEXT_PUBLIC_PROFILE_PIC} alt="" />
+
             </motion.div>
 
 
@@ -323,18 +507,100 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <motion.a
-              href="https://github.com/Zeeshanx01"
-              target="_blank"
-              className="flex items-center gap-2 text-gray-400 hover:text-purple-400"
-              whileHover={{ x: 5 }}
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                {/* GitHub SVG */}
-              </svg>
-              GitHub
-            </motion.a>
-            {/* Add other social links */}
+
+
+
+
+
+
+
+
+
+
+
+            {/* Github Button */}
+            <div className="duration-500 flex space-x-4 py-2">
+
+              <button
+                onClick={handleRedirect}
+                className="duration-500 bg-gradient-to-br from-gray-800/60 to-gray-700/60 rounded-full px-6 py-3 hover:from-gray-700/60 hover:to-gray-800/60 transition-all hover:shadow-glow flex items-center space-x-2 relative overflow-hidden group"
+              >
+                <FaGithub className="duration-500 h-6 w-6 group-hover:rotate-45 transition-transform" />
+                <span className="duration-500 text-sm group-hover:translate-x-1 transition-transform">Visit Github</span>
+                <span className="duration-500 absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              </button>
+
+
+            </div>
+
+
+
+
+
+            {/* Glowing Social Links */}
+            <div className="duration-500 flex space-x-6">
+              <a
+                href="https://linkedin.com/in/zeeshan-munir-b073a51b9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="duration-300 text-gray-400 hover:text-[#0A66C2] transition-colors 
+                          p-2 rounded-full bg-gray-800 hover:bg-gray-700 hover:shadow-glow"
+              >
+                <FaLinkedin className="duration-100 h-6 w-6" />
+              </a>
+
+              <a
+                href="mailto:zeeshan.x01000@gmail.com"
+                className="duration-300 text-gray-400 hover:text-white transition-colors
+                          p-2 rounded-full bg-gray-800 hover:bg-gray-700 hover:shadow-glow"
+              >
+                <FaEnvelope className="duration-100 h-6 w-6" />
+              </a>
+
+              <a
+                href="https://stackoverflow.com/users/20757870/zeeshan-munir"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="duration-300 text-gray-400 hover:text-orange-500 transition-colors
+                          p-2 rounded-full bg-gray-800 hover:bg-gray-700 hover:shadow-glow"
+              >
+                <FaStackOverflow className="duration-100 h-6 w-6" />
+              </a>
+
+              <a
+                href="https://instagram.com/zeeshan_x01"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="duration-300 text-gray-400 hover:text-pink-500 transition-colors
+                          p-2 rounded-full bg-gray-800 hover:bg-gray-700 hover:shadow-glow"
+              >
+                <FaInstagram className="duration-100 h-6 w-6" />
+              </a>
+            </div>
+
+
+
+
+
+
+            {/* Copyright */}
+            {/* <div className="duration-300 border-t border-gray-800 pt-4 pb-0 text-center">
+                <p className="duration-300 text-xs text-gray-400 hover:text-indigo-400 transition-colors">
+                  &copy; {currentYear} Zeeshan Munir. All rights reserved.
+                </p>
+                <p className="duration-300 mt-1 text-xs text-gray-400 hover:text-purple-400 transition-colors">
+                  Built with ❤️ using NextJS, Tailwind CSS, and Framer Motion.
+                </p>
+              </div> */}
+
+
+
+
+
+
+
+
+
           </motion.div>
         </div>
       </motion.nav>

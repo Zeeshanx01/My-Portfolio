@@ -159,7 +159,7 @@ const Hero = () => {
               {/* <div className="h-full w-full bg-[url('/Hero/cover.jpg')] opacity-10 object-cover object-top" /> */}
 
               <div className="h-full w-full opacity-10 object-cover objecttop overflow-hidden" >
-                <img className='blur-sm' src="/Hero/cover.jpg" alt="" />
+                <img className='blur-sm' src={process.env.NEXT_PUBLIC_COVER_PIC} alt="" />
               </div>
 
               <motion.div
@@ -171,7 +171,7 @@ const Hero = () => {
                 {/* <div className="w-64 h-64 border-2 border-purple-500/30 rounded-full bg-[url('/Hero/cover.jpg')]" /> */}
 
                 <div className="w-64 h-64 border-2 border-purple-500/30 rounded-full overflow-hidden backdrop:blur-sm">
-                  <img src="/Hero/cover.jpg" alt="" />
+                  <img src={process.env.NEXT_PUBLIC_COVER_PIC} alt="" />
                 </div>
 
               </motion.div>
