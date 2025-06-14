@@ -282,7 +282,7 @@ const Navbar = () => {
 
               {/* Mobile Social Links */}
               <div
-                className="mt-8 mb-12 space-y-3"
+                className="mt-8  space-y-3"
 
               >
 
@@ -355,7 +355,7 @@ const Navbar = () => {
 
 
                 {/* Copyright */}
-                <div className="duration-300 border-t border-gray-800 pt-4 pb-0 text-center">
+                <div className="duration-300 border-t border-gray-800 pt-4 pb-0 px-20 text-center">
                   <p className="duration-300 text-xs text-gray-400 hover:text-indigo-400 transition-colors">
                     &copy; {currentYear} Zeeshan Munir. All rights reserved.
                   </p>
@@ -392,7 +392,7 @@ const Navbar = () => {
 
       {/* Sticky Bottom Bar (Mobile Only) */}
       <motion.div
-        className="fixed lg:hidden bottom-0 left-0 right-0 bg-black bg-opacity-20 backdrop-blur-sm border-t border-white/10 z-40"
+        className="fixed lg:hidden bottom-0 left-0 right-0 bg-black bg-opacity-20 backdrop-blur-sm border-t border-white/10 z-30"
         animate={{ y: isScrollingDown ? 100 : 0 }}
         transition={{ type: 'spring', stiffness: 300 }}
       >
