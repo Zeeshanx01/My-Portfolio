@@ -66,7 +66,7 @@ const Contact = () => {
 
         {/* Form */}
         <motion.div
-          className="w-full flex max-md:flex-col space-x-4 backdrop-blur-sm bg-black/30 p-10 rounded-3xl border-2 border-purple-500/30"
+          className="w-full flex max-md:flex-col space-x-4 backdrop-blur-sm bg-black/30 p-10 max-md:p-4 rounded-3xl border-2 border-purple-500/30"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}

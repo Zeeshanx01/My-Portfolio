@@ -167,7 +167,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu Button */}
       <motion.nav
-        className={`fixed lg:hidden ${isMenuOpen ? 'bottom-24 right-4' : 'bottom-4 right-4'} duration-700 z-50`}
+        className={`fixed lg:hidden ${isMenuOpen ? 'bottom-28 right-4' : 'bottom-4 right-4'} duration-700 z-50`}
         // initial={{ scale: 0 }}
         // animate={{
         //   scale: 1,
@@ -248,7 +248,7 @@ const Navbar = () => {
                   Zeeshan
                 </h1>
                 <p className={`text-purple-400 ${fontStyles.mono}`}>
-                  Full-Stack Developer
+                  MERN-Stack Developer
                 </p>
               </motion.div>
 
@@ -355,7 +355,7 @@ const Navbar = () => {
 
 
                 {/* Copyright */}
-                <div className="duration-300 border-t border-gray-800 pt-4 pb-0 px-12 text-center">
+                <div className="duration-300 border-t border-gray-800 pt-4 pb-0 px12 text-center">
                   <p className="duration-300 text-xs text-gray-400 hover:text-indigo-400 transition-colors">
                     &copy; {currentYear} Zeeshan Munir. All rights reserved.
                   </p>
@@ -475,7 +475,7 @@ const Navbar = () => {
               animate={{ opacity: [0.8, 1, 0.8] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              Full-Stack Developer
+              MERN-Stack Developer
             </motion.p>
           </motion.div>
 
