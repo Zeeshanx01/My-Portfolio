@@ -26,9 +26,52 @@ const firaCode = Geist_Mono({
   display: 'swap',
 });
 
+const author = "Zeeshan Munir";
+const description = "A creative MERN stack developer's portfolio showcasing projects and skills in modern web technologies like Next.js, React, Node.js, and more.";
+const keywords = ["MERN stack developer", "Next.js", "React developer", "Node.js", "portfolio", "Zeeshan Munir", "web developer", "full-stack developer", "Tailwind CSS"];
+const siteUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
+
 export const metadata = {
-  title: "Zeeshan's Portfolio",
-  description: "Full-Stack Developer Portfolio",
+  title: {
+    default: `${author} | Creative MERN Stack Developer`,
+    template: `%s | ${author}`,
+  },
+  description: description,
+  keywords: keywords,
+  author: [{ name: author }],
+  creator: author,
+  openGraph: {
+    title: `${author}'s Portfolio`,
+    description: description,
+    url: siteUrl,
+    type: 'website',
+    images: [
+      {
+        url: `${siteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: `${author}'s Portfolio`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${author}'s Portfolio`,
+    description: description,
+    creator: '@your-twitter-handle', // Replace with your Twitter handle
+    images: [`${siteUrl}/twitter-image.png`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { FaGithub, FaLinkedin, FaInstagram, FaStackOverflow, FaEnvelope, FaQuora, FaReddit, FaFacebook, FaLink } from 'react-icons/fa';
 import { SiFiverr, SiUpwork, SiFreelancer, SiX, SiThreads } from 'react-icons/si';
 import { navLinks } from '../constants/navLinks';
@@ -47,10 +48,9 @@ const Footer = () => {
 
 
           <div className="duration-700  flex justify-center md:justify-start items-start space-x-6 mb-0 md:mb-0 md:col-span-1 ">
-            <a
+            <Link
               href="/"
               className="duration-700 flex items-center space-x-4"
-              target='_blank'
               rel="noopener noreferrer"
             >
                <div className="group relative">
@@ -68,7 +68,7 @@ const Footer = () => {
                  height={80}
                  unoptimized
                />
-            </a>
+            </Link>
           </div>
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import AboutModal from '../components/AboutModal'
 import { FaCode, FaGraduationCap, FaLightbulb, FaBook, FaGamepad, FaMusic, FaCamera } from 'react-icons/fa'
@@ -59,6 +59,17 @@ const interests = [
 
 const About = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen]);
 
   return (
     <div>
@@ -215,20 +226,12 @@ const About = () => {
           </div>
         </motion.div>
 
-
-
-
-
-
-
-
         {/* Modal Dialog */}
         <AboutModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           fontStyles={fontStyles}
         />
-
       </section>
     </div>
   )

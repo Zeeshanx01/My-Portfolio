@@ -38,9 +38,7 @@ const fontStyles = {
   body: "font-['Inter'] font-light",
   mono: "font-['Fira_Code']"
 }
-// 
-// 
-// dhsfgjsdhfs
+
 export default function Home() {
 
   // Enter checking push
