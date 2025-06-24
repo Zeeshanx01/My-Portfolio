@@ -1,7 +1,7 @@
 // components/Projects.js
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { FiInfo, FiGithub } from 'react-icons/fi';
@@ -58,6 +58,17 @@ const PortfolioBadge = () => (
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
+
   return (
     <section id="projects" className="min-h-screen py-20 px-4">
       <motion.h2
@@ -88,12 +99,6 @@ const Projects = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
             </div>
 
-
-
-
-
-
-
             <div className="p-6 bg-gradient-to-b from-black/80 to-purple-900/5">
               <h3 className={`text-2xl ${fontStyles.heading} text-purple-300 mb-2`}>
                 {project.title}
@@ -107,8 +112,6 @@ const Projects = () => {
                 ))}
               </div>
             </div>
-
-
 
             <div className=" px-6 pb-6 flex gap-3">
               {/* Live Button */}
@@ -134,10 +137,6 @@ const Projects = () => {
                 <span className="text-white/80">Source</span>
               </a>
             </div>
-
-
-
-
           </motion.div>
         ))}
       </div>

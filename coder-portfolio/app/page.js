@@ -31,15 +31,14 @@ const Skills = dynamic(() => import("./sections/Skills"))
 const TechStack = dynamic(() => import("./sections/TechStack"))
 const Projects = dynamic(() => import("./sections/Projects"))
 const Contact = dynamic(() => import("./sections/Contact"))
+const Footer = dynamic(() => import("./sections/Footer"))
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
   body: "font-['Inter'] font-light",
   mono: "font-['Fira_Code']"
 }
-// 
-// 
-// dhsfgjsdhfs
+
 export default function Home() {
 
   // Enter checking push
@@ -56,7 +55,7 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen b-black bg-opacity-20 text-gray-300 ${fontStyles.body}`}>
-      <UnderConstruction />
+      {/* <UnderConstruction /> */}
       {isLoading ? (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center">
           <div className="w-8 h-8 border-2 border-purple-500/20 border-t-purple-500 rounded-full animate-spin" />
@@ -66,13 +65,9 @@ export default function Home() {
 
 
 
-          <Suspense fallback={<div className="fixed inset-0 bg-black" />}>
-            <Particles />
-          </Suspense>
+          <Suspense fallback={<div className="fixed inset-0 bg-black" />}><Particles /></Suspense>
           
-          <Suspense fallback={null}>
-            <Cursor />
-          </Suspense>
+          <Suspense fallback={null}><Cursor /></Suspense>
 
 
 
@@ -83,7 +78,7 @@ export default function Home() {
           </Suspense>
 
           {/* Main Content */}
-          <main className="ml-0 lg:ml-72 pl-0 lg:pl-8 max-lg:w-[100%] overflow-hidden">
+          <main className="ml-0 lg:ml-72 pl-0 lg:pl-0 max-lg:w-[100%] overflow-hidden">
 
 
 
@@ -110,7 +105,12 @@ export default function Home() {
             <Suspense fallback={<div className="h-screen" />}>
               <Contact />
             </Suspense>
-                        <style jsx global>{`
+
+            <Suspense fallback={<div className="h-24" />}>
+              <Footer />
+            </Suspense>
+
+            <style jsx global>{`
         /* Custom scrollbar */
         ::-webkit-scrollbar {
           width: 8px;

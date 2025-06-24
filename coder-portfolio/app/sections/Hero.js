@@ -144,8 +144,8 @@ const Hero = () => {
           {/* Right side - Animated illustration or pattern */}
           <motion.div
             className="relative h-[500px] max-sm:h-[450px]"
-            initial={{ opacity: 0.5, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            // initial={{ opacity: 0.5, scale: 0.9 }}
+            // whileInView={{ opacity: 1, scale: 1 }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-3xl blur-3xl" />
 
