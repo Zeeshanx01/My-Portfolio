@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaCode, FaStackOverflow } from 'react-icons/fa';
 import { navLinks } from '../constants/navLinks';
+import Image from 'next/image'
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
@@ -149,7 +150,7 @@ const Navbar = () => {
                 className="mb-8"
               >
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4 overflow-hidden" >
-                  <img src={process.env.NEXT_PUBLIC_PROFILE_PIC} alt="" />
+                  <Image src={process.env.NEXT_PUBLIC_PROFILE_PIC} alt="" width={80} height={80} style={{objectFit: 'cover'}} priority />
                 </div>
                 <h1 className={`text-2xl ${fontStyles.heading} text-white`}>
                   Zeeshan
@@ -293,7 +294,7 @@ const Navbar = () => {
             <motion.div
               whileHover={{ rotate: 0, scale: 1.05 }}
               className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-4 overflow-hidden" >
-              <img src={process.env.NEXT_PUBLIC_PROFILE_PIC} alt="" />
+              <Image src={process.env.NEXT_PUBLIC_PROFILE_PIC} alt="" width={96} height={96} style={{objectFit: 'cover'}} priority />
             </motion.div>
 
             <motion.h1
