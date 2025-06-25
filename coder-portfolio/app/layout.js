@@ -27,19 +27,25 @@ const firaCode = Geist_Mono({
 });
 
 const author = "Zeeshan Munir";
+
 const description = "A creative MERN stack developer's portfolio showcasing projects and skills in modern web technologies like Next.js, React, Node.js, and more.";
+
 const keywords = ["MERN stack developer", "Next.js", "React developer", "Node.js", "portfolio", "Zeeshan Munir", "web developer", "full-stack developer", "Tailwind CSS"];
+
 const siteUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
 
 export const metadata = {
+
   title: {
     default: `${author} | Creative MERN Stack Developer`,
     template: `%s | ${author}`,
   },
+
   description: description,
   keywords: keywords,
   author: [{ name: author }],
   creator: author,
+
   openGraph: {
     title: `${author}'s Portfolio`,
     description: description,
@@ -54,13 +60,15 @@ export const metadata = {
       },
     ],
   },
+
   twitter: {
     card: 'summary_large_image',
     title: `${author}'s Portfolio`,
     description: description,
-    creator: '@your-twitter-handle', // Replace with your Twitter handle
+    creator: '@ZeeshanMunir165', // Replace with your Twitter handle
     images: [`${siteUrl}/twitter-image.png`],
   },
+
   robots: {
     index: true,
     follow: true,

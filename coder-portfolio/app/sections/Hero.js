@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { SiNextdotjs, SiTailwindcss, SiShadcnui, SiClerk, SiStreamlit } from 'react-icons/si'
+import Image from 'next/image'
+import TechStackModal from '../components/TechStackModal'
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
@@ -42,11 +44,19 @@ const techStack = [
 ]
 
 const Hero = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedTech, setSelectedTech] = useState(null);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleTechClick = (tech) => {
+    setSelectedTech(tech);
+    setModalOpen(true);
   };
 
   return (
@@ -99,11 +109,10 @@ const Hero = () => {
               whileInView={{ opacity: 1 }}
             >
               {techStack.map((tech, index) => (
-                <motion.a
+                <motion.button
                   key={tech.name}
-                  href={tech.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  type="button"
+                  onClick={() => handleTechClick(tech)}
                   className="flex items-center gap-2 px-4 py-2 bg-black/30 backdrop-blur-sm border border-purple-500/20 rounded-lg cursor-pointer"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -112,7 +121,7 @@ const Hero = () => {
                 >
                   <tech.icon className={`text-xl ${tech.color}`} />
                   <span className="text-gray-300">{tech.name}</span>
-                </motion.a>
+                </motion.button>
               ))}
             </motion.div>
 
@@ -143,7 +152,7 @@ const Hero = () => {
 
           {/* Right side - Animated illustration or pattern */}
           <motion.div
-            className="relative h-[500px] max-sm:h-[450px]"
+            className="relative h-[580px] max-sm:h-[500px]"
             // initial={{ opacity: 0.5, scale: 0.9 }}
             // whileInView={{ opacity: 1, scale: 1 }}
           >
@@ -159,7 +168,7 @@ const Hero = () => {
               {/* <div className="h-full w-full bg-[url('/Hero/cover.jpg')] opacity-10 object-cover object-top" /> */}
 
               <div className="h-full w-full opacity-10 object-cover overflow-hidden" >
-                <img className='blur-sm' src={process.env.NEXT_PUBLIC_COVER_PIC} alt="" />
+                <Image className='blur-sm' src={process.env.NEXT_PUBLIC_COVER_PIC} alt="" fill style={{objectFit: 'cover'}} priority />
               </div>
 
               <motion.div
@@ -171,7 +180,7 @@ const Hero = () => {
                 {/* <div className="w-64 h-64 border-2 border-purple-500/30 rounded-full bg-[url('/Hero/cover.jpg')]" /> */}
 
                 <div className="w-64 h-64 border-2 border-purple-500/30 rounded-full overflow-hidden backdrop:blur-sm">
-                  <img src={process.env.NEXT_PUBLIC_COVER_PIC} alt="" />
+                  <Image src={process.env.NEXT_PUBLIC_COVER_PIC} alt="" width={256} height={256} style={{objectFit: 'cover'}} priority />
                 </div>
 
               </motion.div>
@@ -185,6 +194,12 @@ const Hero = () => {
           </motion.div>
         </div>
       </section>
+      <TechStackModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        techName={selectedTech?.name}
+        techUrl={selectedTech?.url}
+      />
     </div>
   )
 }
