@@ -5,18 +5,31 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { FiX, FiCalendar, FiGithub, FiUser, FiBriefcase, FiInfo, FiArrowLeft } from 'react-icons/fi';
+import { getProjectTypeLabel, getProjectTypeColor } from '../constants/projectsData';
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
   mono: "font-['Fira_Code']"
 };
 
-const PortfolioBadge = () => (
-  <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/10 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-500/30 text-purple-300 text-sm">
-    <FiInfo className="text-xs" />
-    <span>Portfolio Demonstration</span>
-  </div>
-);
+const PortfolioBadge = ({ projectType }) => {
+  const label = getProjectTypeLabel(projectType);
+  const color = getProjectTypeColor(projectType);
+  
+  // Define color classes based on project type
+  const colorClasses = {
+    blue: "border-blue-500/30 text-blue-300",
+    purple: "border-purple-500/30 text-purple-300",
+    green: "border-green-500/30 text-green-300"
+  };
+  
+  return (
+    <div className={`absolute top-4 left-4 flex items-center gap-2 bg-black/10 backdrop-blur-sm px-3 py-1 rounded-full border ${colorClasses[color]} text-sm`}>
+      <FiInfo className="text-xs" />
+      <span>{label}</span>
+    </div>
+  );
+};
 
 const ProjectDetails = ({ project, onClose }) => {
   const [zoomedImage, setZoomedImage] = useState(null);
@@ -44,7 +57,7 @@ const ProjectDetails = ({ project, onClose }) => {
         </button>
 
         <div className="space-y-8">
-          <PortfolioBadge />
+          <PortfolioBadge projectType={project.projectType} />
 
           <div className="relative h-72 md:h-96 rounded-xl overflow-hidden border border-purple-500/20">
             <Image

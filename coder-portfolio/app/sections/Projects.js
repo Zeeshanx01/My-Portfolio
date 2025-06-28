@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { FiInfo, FiGithub } from 'react-icons/fi';
 import ProjectDetails from '../components/ProjectDetails';
+import { projectsData, PROJECT_TYPES, getProjectTypeLabel, getProjectTypeColor } from '../constants/projectsData';
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
@@ -13,47 +14,24 @@ const fontStyles = {
   mono: "font-['Fira_Code']"
 };
 
-const projectsData = [
-  {
-    id: 1,
-    title: "LinkTweak (Portfolio Project)",
-    description: "URL shortening tool demonstration",
-    tech: ["Next.js", "Node.js", "MongoDB", "TailwindCSS"],
-    image: "/projects/linktweak/linktweak-01.png",
-    liveUrl: "https://link-tweak.vercel.app/",
-    repoUrl: "https://github.com/Zeeshanx01/LinkTweak",
-    details: {
-      timeline: "Feb 2024 - Apr 2024",
-      role: "Full-stack Developer",
-      client: "Personal Project",
-      status: "Completed",
-      purpose: "Demonstrates full-stack development capabilities with modern web technologies",
-      features: [
-        "Custom URL shortening",
-        "Analytics dashboard",
-        "User authentication",
-        "QR code generation"
-      ]
-    },
-    screenshots: [
-      { path: "/projects/linktweak/linktweak-02.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-08.jpg", orientation: "P" },
-      { path: "/projects/linktweak/linktweak-03.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-04.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-05.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-06.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-09.jpg", orientation: "P" },
-      { path: "/projects/linktweak/linktweak-07.png", orientation: "L" },
-    ]
-  }
-];
-
-const PortfolioBadge = () => (
-  <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-500/30 text-purple-300 text-sm">
-    <FiInfo className="text-xs" />
-    <span>Portfolio Demonstration</span>
-  </div>
-);
+const PortfolioBadge = ({ projectType }) => {
+  const label = getProjectTypeLabel(projectType);
+  const color = getProjectTypeColor(projectType);
+  
+  // Define color classes based on project type
+  const colorClasses = {
+    blue: "border-blue-500/30 text-blue-300",
+    purple: "border-purple-500/30 text-purple-300",
+    green: "border-green-500/30 text-green-300"
+  };
+  
+  return (
+    <div className={`absolute top-4 left-4 flex items-center gap-2 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full border ${colorClasses[color]} text-sm z-10`}>
+      <FiInfo className="text-xs" />
+      <span>{label}</span>
+    </div>
+  );
+};
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -88,7 +66,7 @@ const Projects = () => {
             whileInView={{ opacity: 1 }}
             onClick={() => setSelectedProject(project)}
           >
-            <PortfolioBadge />
+            <PortfolioBadge projectType={project.projectType} />
             <div className="relative h-64 bg-black/50">
               <Image
                 src={project.image}
