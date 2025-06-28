@@ -99,7 +99,7 @@ const About = () => {
               </motion.p>
 
 
-
+{/*  */}
               <div className='flex justify-end space-x-3'>
 
                 <motion.div
