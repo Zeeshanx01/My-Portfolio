@@ -25,10 +25,10 @@ const PortfolioBadge = ({ projectType }) => {
   
   return (
     <div className={`absolute top-4 left-4 flex items-center gap-2 bg-black/10 backdrop-blur-sm px-3 py-1 rounded-full border ${colorClasses[color]} text-sm`}>
-      <FiInfo className="text-xs" />
+    <FiInfo className="text-xs" />
       <span>{label}</span>
-    </div>
-  );
+  </div>
+);
 };
 
 const ProjectDetails = ({ project, onClose }) => {
@@ -82,6 +82,16 @@ const ProjectDetails = ({ project, onClose }) => {
                   Overview
                 </h5>
                 <p className="text-white/80 leading-relaxed">
+                  {project.details.overview}
+                </p>
+              </div>
+
+              {/* Purpose Section */}
+              <div className="">
+                <h5 className={`text-2xl ${fontStyles.heading} text-purple-400 mb-3`}>
+                  Purpose
+                </h5>
+                <p className="text-white/80 leading-relaxed">
                   {project.details.purpose}
                 </p>
               </div>
@@ -110,17 +120,17 @@ const ProjectDetails = ({ project, onClose }) => {
               <div className=" px-3 pb-3 flex gap-3">
                 {/* Live Button - Only show if liveUrl exists */}
                 {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    className="flex items-center gap-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-full border border-red-500/30 transition-all"
-                    target="_blank"
-                  >
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-                    </span>
-                    <span className="text-red-300">Live</span>
-                  </a>
+                <a
+                  href={project.liveUrl}
+                  className="flex items-center gap-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-full border border-red-500/30 transition-all"
+                  target="_blank"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+                  </span>
+                  <span className="text-red-300">Live</span>
+                </a>
                 )}
 
                 {/* Source Button */}
