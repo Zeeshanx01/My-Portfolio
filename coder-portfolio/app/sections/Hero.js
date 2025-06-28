@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { SiNextdotjs, SiTailwindcss, SiShadcnui, SiClerk, SiStreamlit } from 'react-icons/si'
 import Image from 'next/image'
 import TechStackModal from '../components/TechStackModal'
+import { getSkillsByNames } from '../constants/skillsData'
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
@@ -10,38 +11,8 @@ const fontStyles = {
   mono: "font-['Fira_Code']"
 }
 
-const techStack = [
-  {
-    name: 'Next.js',
-    icon: SiNextdotjs,
-    color: 'text-white',
-    url: 'https://nextjs.org'
-  },
-  {
-    name: 'Tailwind CSS',
-    icon: SiTailwindcss,
-    color: 'text-cyan-400',
-    url: 'https://tailwindcss.com'
-  },
-  {
-    name: 'shadcn/ui',
-    icon: SiShadcnui,
-    color: 'text-purple-400',
-    url: 'https://ui.shadcn.com'
-  },
-  {
-    name: 'Clerk',
-    icon: SiClerk,
-    color: 'text-blue-400',
-    url: 'https://clerk.com'
-  },
-  {
-    name: 'Stream',
-    icon: SiStreamlit,
-    color: 'text-green-400',
-    url: 'https://getstream.io'
-  }
-]
+// Get only the skills needed for Hero section
+const techStack = getSkillsByNames(['Next.js', 'TailwindCSS', 'shadcn/ui', 'Clerk', 'Stream']);
 
 const Hero = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -199,6 +170,8 @@ const Hero = () => {
         onClose={() => setModalOpen(false)}
         techName={selectedTech?.name}
         techUrl={selectedTech?.url}
+        techIcon={selectedTech?.icon}
+        techDescription={selectedTech?.description}
       />
     </div>
   )
