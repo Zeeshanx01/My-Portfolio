@@ -98,15 +98,42 @@ const About = () => {
                 <span className="text-purple-300 ml-2">Click to learn more →</span>
               </motion.p>
 
-              <motion.div
-                className="flex gap-4 justify-end"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-              >
-                <button className={`px-6 py-3 bg-purple-500/20 border border-purple-500/30 rounded-lg text-purple-300 hover:bg-purple-500/30 transition-all ${fontStyles.mono}`}>
-                  Download CV
-                </button>
-              </motion.div>
+
+
+              <div className='flex justify-end space-x-3'>
+
+                <motion.div
+                  className="flex gap-4 justify-end"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                >
+                  <button
+                    onClick={() => window.open('https://zeeshanx01.github.io/myCV/Zeeshan-Munir_CV.pdf', '_blank', 'noopener,noreferrer')}
+                    className={`px-6 py-3 bg-purple-500/20 border border-purple-500/30 rounded-lg text-purple-300 hover:bg-purple-500/30 transition-all ${fontStyles.mono}`}
+                  >
+                    View CV
+                  </button>
+                </motion.div>
+
+                <motion.div
+                  className="flex gap-4 justify-end"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                >
+                  <button
+                    onClick={() => window.open('https://raw.githubusercontent.com/Zeeshanx01/myCV/main/Zeeshan-Munir_CV.pdf', '_blank', 'noopener,noreferrer')}
+                    className={`px-6 py-3 bg-purple-500/20 border border-purple-500/30 rounded-lg text-purple-300 hover:bg-purple-500/30 transition-all ${fontStyles.mono}`}
+                  >
+                    Download CV
+                  </button>
+                </motion.div>
+
+              </div>
+
+
+
+
+
             </div>
 
             {/* Quick Stats */}
