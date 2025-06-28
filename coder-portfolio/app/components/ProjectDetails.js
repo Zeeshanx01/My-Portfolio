@@ -177,7 +177,9 @@ const ProjectDetails = ({ project, onClose }) => {
               Gallery
             </h4>
 
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-[minmax(200px,auto)]">
+
+
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-[minmax(150px,auto)] sm:auto-rows-[minmax(200px,auto)]">
               {project.screenshots.map((ss, index) => {
                 const isPortrait = ss.orientation === 'P';
                 return (
@@ -209,12 +211,12 @@ const ProjectDetails = ({ project, onClose }) => {
                   </motion.div>
                 );
               })}
-
-
-
-
-
             </div>
+
+
+
+
+
             {/* Back Button */}
             <div className="mt-8 flex justify-center">
               <button
