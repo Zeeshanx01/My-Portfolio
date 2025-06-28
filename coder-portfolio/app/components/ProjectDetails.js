@@ -82,11 +82,23 @@ const ProjectDetails = ({ project, onClose }) => {
                   Overview
                 </h5>
                 <p className="text-white/80 leading-relaxed">
-                  {project.details.purpose} This project showcases advanced full-stack
-                  development capabilities including API design, database management, and modern
-                  UI implementation. The system features secure authentication, real-time analytics,
-                  and responsive design principles.
+                  {project.details.purpose}
                 </p>
+              </div>
+
+              {/* Features Section */}
+              <div className="">
+                <h5 className={`text-2xl ${fontStyles.heading} text-purple-400 mb-3`}>
+                  Key Features
+                </h5>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {project.details.features.map((feature, index) => (
+                    <div key={index} className="flex items-center gap-2 text-white/70">
+                      <span className="w-2 h-2 bg-purple-400 rounded-full"></span>
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
 
@@ -96,18 +108,20 @@ const ProjectDetails = ({ project, onClose }) => {
 
 
               <div className=" px-3 pb-3 flex gap-3">
-                {/* Live Button */}
-                <a
-                  href={project.liveUrl}
-                  className="flex items-center gap-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-full border border-red-500/30 transition-all"
-                  target="_blank"
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-                  </span>
-                  <span className="text-red-300">Live</span>
-                </a>
+                {/* Live Button - Only show if liveUrl exists */}
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    className="flex items-center gap-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-full border border-red-500/30 transition-all"
+                    target="_blank"
+                  >
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+                    </span>
+                    <span className="text-red-300">Live</span>
+                  </a>
+                )}
 
                 {/* Source Button */}
                 <a

@@ -92,18 +92,20 @@ const Projects = () => {
             </div>
 
             <div className=" px-6 pb-6 flex gap-3">
-              {/* Live Button */}
-              <a
-                href={project.liveUrl}
-                className="flex items-center gap-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-full border border-red-500/30 transition-all"
-                target="_blank"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-                </span>
-                <span className="text-red-300">Live</span>
-              </a>
+              {/* Live Button - Only show if liveUrl exists */}
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  className="flex items-center gap-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-full border border-red-500/30 transition-all"
+                  target="_blank"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+                  </span>
+                  <span className="text-red-300">Live</span>
+                </a>
+              )}
 
               {/* Source Button */}
               <a
