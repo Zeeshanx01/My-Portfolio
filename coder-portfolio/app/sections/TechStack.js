@@ -86,6 +86,7 @@ const TechStack = () => {
         techUrl={selectedSkill?.url}
         techIcon={selectedSkill?.icon}
         techDescription={selectedSkill?.description}
+        techColor={selectedSkill?.color}
       />
     </div>
   )

@@ -172,6 +172,7 @@ const Hero = () => {
         techUrl={selectedTech?.url}
         techIcon={selectedTech?.icon}
         techDescription={selectedTech?.description}
+        techColor={selectedTech?.color}
       />
     </div>
   )
