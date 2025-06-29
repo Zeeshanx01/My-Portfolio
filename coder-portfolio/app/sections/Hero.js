@@ -52,7 +52,7 @@ const Hero = () => {
               whileInView={{ letterSpacing: '0em' }}
               transition={{ duration: 0.4 }}
             >
-              Zeeshan.
+              Zeeshan
             </motion.h1>
             <motion.h2
               className={`text-5xl ${fontStyles.heading} text-gray-400 mb-8`}

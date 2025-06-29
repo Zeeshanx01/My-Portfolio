@@ -177,9 +177,12 @@ export const projectsData = [
       
     },
     screenshots: [
+      { path: "/projects/chattypie/chattypie-01.png", orientation: "L" },
       { path: "/projects/chattypie/chattypie-02.png", orientation: "L" },
-      { path: "/projects/chattypie/chattypie-03.png", orientation: "P" },
-      { path: "/projects/chattypie/chattypie-04.png", orientation: "L" }
+      { path: "/projects/chattypie/chattypie-03.png", orientation: "L" },
+      { path: "/projects/chattypie/chattypie-04.png", orientation: "L" },
+      { path: "/projects/chattypie/chattypie-05.png", orientation: "L" },
+      { path: "/projects/chattypie/chattypie-06.png", orientation: "L" },
     ]
   },
 
@@ -215,9 +218,8 @@ export const projectsData = [
       ]
     },
     screenshots: [
+      { path: "/projects/getmeachai/getmeachai-01.png", orientation: "L" },
       { path: "/projects/getmeachai/getmeachai-02.png", orientation: "L" },
-      { path: "/projects/getmeachai/getmeachai-03.png", orientation: "P" },
-      { path: "/projects/getmeachai/getmeachai-04.png", orientation: "L" }
     ]
   },
 
@@ -229,7 +231,7 @@ export const projectsData = [
     title: "Online Food Delivery System",
     description: "A full-stack online food delivery platform with admin panel, dynamic frontend, and MySQL backend integration.",
     tech: ["Next.js", "MySQL", "TailwindCSS", "Clerk Auth", "React-Toastify", "Lordicons"],
-    image: "/projects/fooddelivery/fooddelivery-cover.png",
+    image: "/projects/ofds/ofds-01.png",
     liveUrl: "", // Add if available
     repoUrl: "https://github.com/Zeeshanx01/Online-Food-Delivery-System", // Add if available
     projectType: 1, // 1 for portfolio demonstration
@@ -253,7 +255,11 @@ export const projectsData = [
       ]
     },
     screenshots: [
-      // You can add screenshot paths here when available
+      { path: "/projects/ofds/ofds-01.png", orientation: "L" },
+      { path: "/projects/ofds/ofds-03.png", orientation: "L" },
+      { path: "/projects/ofds/ofds-05.png", orientation: "L" },
+      { path: "/projects/ofds/ofds-04.png", orientation: "L" },
+      { path: "/projects/ofds/ofds-02.png", orientation: "L" },
     ]
   }
   

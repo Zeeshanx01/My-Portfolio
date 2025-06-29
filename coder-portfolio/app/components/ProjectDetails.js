@@ -154,10 +154,13 @@ const ProjectDetails = ({ project, onClose }) => {
 
 
 
-            <div className="md:w-[30%] grid grid-cols-1 gap-4 mb-6 p-4 rounded-xl border border-purple-500/20">
-              <h4 className={`text-2xl ${fontStyles.heading} text-purple-400 mb-6`}>
+            <div className="md:w-[30%] h-fit grid grid-cols-1 gap-4 mb-6 p-4 rounded-xl border border-purple-500/20">
+
+
+              <h4 className={`text-2xl ${fontStyles.heading} text-purple-400 mb-3`}>
                 Project Details
               </h4>
+
               <div className="flex items-center gap-3">
                 <FiCalendar className="text-purple-400" />
                 <div>
@@ -165,6 +168,8 @@ const ProjectDetails = ({ project, onClose }) => {
                   <p className="text-white/90">{project.details.timeline}</p>
                 </div>
               </div>
+
+
               <div className="flex items-center gap-3">
                 <FiUser className="text-purple-400" />
                 <div>
@@ -172,6 +177,8 @@ const ProjectDetails = ({ project, onClose }) => {
                   <p className="text-white/90">{project.details.role}</p>
                 </div>
               </div>
+
+
               <div className="flex items-center gap-3">
                 <FiBriefcase className="text-purple-400" />
                 <div>
@@ -179,6 +186,8 @@ const ProjectDetails = ({ project, onClose }) => {
                   <p className="text-white/90">{project.details.client}</p>
                 </div>
               </div>
+
+
               <div className="flex items-center gap-3">
                 <FiInfo className="text-purple-400" />
                 <div>
@@ -186,6 +195,8 @@ const ProjectDetails = ({ project, onClose }) => {
                   <p className="text-white/90">{project.details.status}</p>
                 </div>
               </div>
+
+
             </div>
 
 
