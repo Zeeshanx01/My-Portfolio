@@ -32,10 +32,10 @@ export const projectsData = [
     screenshots: [
       { path: "/projects/linktweak/linktweak-02.png", orientation: "L" },
       { path: "/projects/linktweak/linktweak-08.jpg", orientation: "P" },
-      { path: "/projects/linktweak/linktweak-03.png", orientation: "L" },
+      // { path: "/projects/linktweak/linktweak-03.png", orientation: "L" },
       { path: "/projects/linktweak/linktweak-04.png", orientation: "L" },
       { path: "/projects/linktweak/linktweak-05.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-06.png", orientation: "L" },
+      // { path: "/projects/linktweak/linktweak-06.png", orientation: "L" },
       { path: "/projects/linktweak/linktweak-09.jpg", orientation: "P" },
       { path: "/projects/linktweak/linktweak-07.png", orientation: "L" },
     ]
@@ -48,7 +48,7 @@ export const projectsData = [
     title: "ZenTasks",
     description: "A minimalist to-do list app that helps users manage tasks with a smooth and clean interface.",
     tech: ["React", "TailwindCSS", "Lordicons"],
-    image: "/projects/linktweak/linktweak-01.png",
+    image: "/projects/zentasks/zentasks-01.png",
     liveUrl: "https://zen-tasks-five.vercel.app/",
     repoUrl: "https://github.com/Zeeshanx01/Todolist-React-App",
     projectType: 1, // 1 for portfolio demonstration 0 for personal project 2 for real client project
@@ -70,14 +70,10 @@ export const projectsData = [
       ]
     },
     screenshots: [
-      { path: "/projects/linktweak/linktweak-02.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-08.jpg", orientation: "P" },
-      { path: "/projects/linktweak/linktweak-03.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-04.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-05.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-06.png", orientation: "L" },
-      { path: "/projects/linktweak/linktweak-09.jpg", orientation: "P" },
-      { path: "/projects/linktweak/linktweak-07.png", orientation: "L" },
+      { path: "/projects/zentasks/zentasks-01.png", orientation: "L" },
+      { path: "/projects/zentasks/zentasks-03.jpg", orientation: "P" },
+      { path: "/projects/zentasks/zentasks-04.jpg", orientation: "P" },
+      { path: "/projects/zentasks/zentasks-02.png", orientation: "L" },
     ]
   },
  
@@ -109,9 +105,10 @@ export const projectsData = [
       ]
     },
     screenshots: [
+      { path: "/projects/passop/passop-01.png", orientation: "L" },
       { path: "/projects/passop/passop-02.png", orientation: "L" },
-      { path: "/projects/passop/passop-03.png", orientation: "L" },
-      { path: "/projects/passop/passop-04.png", orientation: "L" }
+      { path: "/projects/passop/passop-03.jpg", orientation: "P" },
+      { path: "/projects/passop/passop-04.jpg", orientation: "P" },
     ]
   },
   
@@ -144,9 +141,10 @@ export const projectsData = [
       ]
     },
     screenshots: [
+      { path: "/projects/linktree/linktree-01.png", orientation: "L" },
       { path: "/projects/linktree/linktree-02.png", orientation: "L" },
-      { path: "/projects/linktree/linktree-03.png", orientation: "L" },
-      { path: "/projects/linktree/linktree-04.png", orientation: "P" }
+      { path: "/projects/linktree/linktree-03.jpg", orientation: "P" },
+      { path: "/projects/linktree/linktree-04.jpg", orientation: "P" },
     ]
   },
 
