@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { SiNextdotjs, SiTailwindcss, SiShadcnui, SiClerk, SiStreamlit } from 'react-icons/si'
+// import { SiNextdotjs, SiTailwindcss, SiShadcnui, SiClerk, SiStreamlit } from 'react-icons/si'
 import Image from 'next/image'
 import TechStackModal from '../components/TechStackModal'
 import { getSkillsByNames } from '../constants/skillsData'

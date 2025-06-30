@@ -12,8 +12,8 @@ export const projectsData = [
     repoUrl: "https://github.com/Zeeshanx01/LinkTweak",
     projectType: 1, // 1 for portfolio demonstration 0 for personal project 2 for real client project
     details: {
-      timeline: "Feb 2024 - Apr 2024",
-      role: "Full-stack Developer",
+      timeline: "Sep 2024 - Oct 2024",
+      role: "Full-Stack Developer",
       client: "Personal Project",
       status: "Completed (more features planned)",
       overview: "LinkTweak is a full-stack web application built to simplify long URLs into compact, shareable short links. Developed using Next.js for the frontend and backend routing, along with MongoDB for data storage, the platform offers a smooth and responsive user interface crafted with TailwindCSS. The project includes features such as custom link generation, full CRUD support for managing links, and a user-friendly dashboard. Though currently designed for demo purposes, it is structured with scalability in mind—future updates are planned to include user authentication, personalized dashboards, and real-time analytics. This project highlights my proficiency in building complete web applications with modern technologies, RESTful APIs, and deployment on platforms like Vercel.",
@@ -53,8 +53,8 @@ export const projectsData = [
     repoUrl: "https://github.com/Zeeshanx01/Todolist-React-App",
     projectType: 1, // 1 for portfolio demonstration 0 for personal project 2 for real client project
     details: {
-      timeline: "Mar 2024",
-      role: "Frontend Developer",
+      timeline: "Sep 2024",
+      role: "Full Stack Developer",
       client: "Personal Project",
       status: "Completed",
       overview: "ZenTasks is a single-page task management app designed for simplicity and productivity. Built with React and styled using TailwindCSS, the app allows users to create, update, delete, and mark tasks as complete. It features a clean top-bar input section for quickly adding new tasks and a dynamic list below that organizes them intuitively. Lordicon animations add a touch of interactivity, enhancing the user experience. All data is stored locally using the browser's LocalStorage API, ensuring persistence without a backend. ZenTasks showcases my frontend development skills, state management in React, and the ability to deliver polished and responsive UIs.",
@@ -89,8 +89,8 @@ export const projectsData = [
     repoUrl: "https://github.com/Zeeshanx01/Password-Manager-Local", // replace if needed
     projectType: 1, // Portfolio Demonstration
     details: {
-      timeline: "Apr 2024 - May 2024",
-      role: "Frontend Developer",
+      timeline: "Oct 2024 - Nov 2024",
+      role: "Full Stack Developer",
       client: "Personal Project",
       status: "Completed",
       overview: "PassOP is a single-page password manager built to demonstrate my front-end capabilities with React and TailwindCSS. It enables users to store website login credentials locally in their browser, with an intuitive layout that separates input and data display areas. Each credential (URL, username, or password) can be copied individually via dedicated buttons. The project features smooth animations, responsive design, and toast notifications to enhance UX—all implemented without using a backend or database.",
@@ -125,7 +125,7 @@ export const projectsData = [
     repoUrl: "https://github.com/Zeeshanx01/LinkTree-Clone", // replace if needed
     projectType: 1, // Portfolio Demonstration
     details: {
-      timeline: "May 2024 - Jun 2024",
+      timeline: "Nov 2024 - Dec 2024",
       role: "Full-stack Developer",
       client: "Personal Project",
       status: "Completed",
@@ -159,7 +159,7 @@ export const projectsData = [
     repoUrl: "https://github.com/Zeeshanx01/Chat-App", // replace if available
     projectType: 1, // Portfolio Demonstration
     details: {
-      timeline: "Jun 2024 - Ongoing",
+      timeline: "March 2025",
       role: "Full-stack Developer",
       client: "Personal Project",
       status: "In Development",
@@ -202,7 +202,7 @@ export const projectsData = [
     repoUrl: "https://github.com/Zeeshanx01/Get-Me-A-Chai", // replace if available
     projectType: 1, // Portfolio Demonstration
     details: {
-      timeline: "Apr 2024 - May 2024",
+      timeline: "Nov 2024",
       role: "Full-stack Developer",
       client: "Personal Project",
       status: "Partially Completed (payment integration pending)",
@@ -236,10 +236,10 @@ export const projectsData = [
     repoUrl: "https://github.com/Zeeshanx01/Online-Food-Delivery-System", // Add if available
     projectType: 1, // 1 for portfolio demonstration
     details: {
-      timeline: "May 2024 - Ongoing",
-      role: "Full-stack Developer",
+      timeline: "Dec 2024",
+      role: "Full Stack Developer",
       client: "University Project",
-      status: "In Progress",
+      status: "Partially Completed",
       overview:
         "This project demonstrates a scalable full-stack food delivery web application built with Next.js and MySQL. It includes a multi-role system (user/admin), dynamic data fetching, and secure authentication using Clerk. The backend consists of 8 MySQL tables (food items, restaurants, orders, users, etc.), all of which are integrated into the frontend for real-time display and management. Admin users can perform full CRUD operations on all entities through a separate admin dashboard.",
       purpose:
