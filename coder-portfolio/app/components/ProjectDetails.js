@@ -5,18 +5,31 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { FiX, FiCalendar, FiGithub, FiUser, FiBriefcase, FiInfo, FiArrowLeft } from 'react-icons/fi';
+import { getProjectTypeLabel, getProjectTypeColor } from '../constants/projectsData';
 
 const fontStyles = {
   heading: "font-['Space_Grotesk'] font-bold",
   mono: "font-['Fira_Code']"
 };
 
-const PortfolioBadge = () => (
-  <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/10 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-500/30 text-purple-300 text-sm">
+const PortfolioBadge = ({ projectType }) => {
+  const label = getProjectTypeLabel(projectType);
+  const color = getProjectTypeColor(projectType);
+  
+  // Define color classes based on project type
+  const colorClasses = {
+    blue: "border-blue-500/30 text-blue-300",
+    purple: "border-purple-500/30 text-purple-300",
+    green: "border-green-500/30 text-green-300"
+  };
+  
+  return (
+    <div className={`absolute top-4 left-4 flex items-center gap-2 bg-black/10 backdrop-blur-sm px-3 py-1 rounded-full border ${colorClasses[color]} text-sm`}>
     <FiInfo className="text-xs" />
-    <span>Portfolio Demonstration</span>
+      <span>{label}</span>
   </div>
 );
+};
 
 const ProjectDetails = ({ project, onClose }) => {
   const [zoomedImage, setZoomedImage] = useState(null);
@@ -44,7 +57,7 @@ const ProjectDetails = ({ project, onClose }) => {
         </button>
 
         <div className="space-y-8">
-          <PortfolioBadge />
+          <PortfolioBadge projectType={project.projectType} />
 
           <div className="relative h-72 md:h-96 rounded-xl overflow-hidden border border-purple-500/20">
             <Image
@@ -69,11 +82,33 @@ const ProjectDetails = ({ project, onClose }) => {
                   Overview
                 </h5>
                 <p className="text-white/80 leading-relaxed">
-                  {project.details.purpose} This project showcases advanced full-stack
-                  development capabilities including API design, database management, and modern
-                  UI implementation. The system features secure authentication, real-time analytics,
-                  and responsive design principles.
+                  {project.details.overview}
                 </p>
+              </div>
+
+              {/* Purpose Section */}
+              <div className="">
+                <h5 className={`text-2xl ${fontStyles.heading} text-purple-400 mb-3`}>
+                  Purpose
+                </h5>
+                <p className="text-white/80 leading-relaxed">
+                  {project.details.purpose}
+                </p>
+              </div>
+
+              {/* Features Section */}
+              <div className="">
+                <h5 className={`text-2xl ${fontStyles.heading} text-purple-400 mb-3`}>
+                  Key Features
+                </h5>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {project.details.features.map((feature, index) => (
+                    <div key={index} className="flex items-center gap-2 text-white/70">
+                      <span className="w-2 h-2 bg-purple-400 rounded-full"></span>
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
 
@@ -83,7 +118,8 @@ const ProjectDetails = ({ project, onClose }) => {
 
 
               <div className=" px-3 pb-3 flex gap-3">
-                {/* Live Button */}
+                {/* Live Button - Only show if liveUrl exists */}
+                {project.liveUrl && (
                 <a
                   href={project.liveUrl}
                   className="flex items-center gap-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-full border border-red-500/30 transition-all"
@@ -95,6 +131,7 @@ const ProjectDetails = ({ project, onClose }) => {
                   </span>
                   <span className="text-red-300">Live</span>
                 </a>
+                )}
 
                 {/* Source Button */}
                 <a
@@ -117,10 +154,13 @@ const ProjectDetails = ({ project, onClose }) => {
 
 
 
-            <div className="md:w-[30%] grid grid-cols-1 gap-4 mb-6 p-4 rounded-xl border border-purple-500/20">
-              <h4 className={`text-2xl ${fontStyles.heading} text-purple-400 mb-6`}>
+            <div className="md:w-[30%] h-fit grid grid-cols-1 gap-4 mb-6 p-4 rounded-xl border border-purple-500/20">
+
+
+              <h4 className={`text-2xl ${fontStyles.heading} text-purple-400 mb-3`}>
                 Project Details
               </h4>
+
               <div className="flex items-center gap-3">
                 <FiCalendar className="text-purple-400" />
                 <div>
@@ -128,6 +168,8 @@ const ProjectDetails = ({ project, onClose }) => {
                   <p className="text-white/90">{project.details.timeline}</p>
                 </div>
               </div>
+
+
               <div className="flex items-center gap-3">
                 <FiUser className="text-purple-400" />
                 <div>
@@ -135,6 +177,8 @@ const ProjectDetails = ({ project, onClose }) => {
                   <p className="text-white/90">{project.details.role}</p>
                 </div>
               </div>
+
+
               <div className="flex items-center gap-3">
                 <FiBriefcase className="text-purple-400" />
                 <div>
@@ -142,6 +186,8 @@ const ProjectDetails = ({ project, onClose }) => {
                   <p className="text-white/90">{project.details.client}</p>
                 </div>
               </div>
+
+
               <div className="flex items-center gap-3">
                 <FiInfo className="text-purple-400" />
                 <div>
@@ -149,6 +195,8 @@ const ProjectDetails = ({ project, onClose }) => {
                   <p className="text-white/90">{project.details.status}</p>
                 </div>
               </div>
+
+
             </div>
 
 
@@ -164,7 +212,9 @@ const ProjectDetails = ({ project, onClose }) => {
               Gallery
             </h4>
 
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-[minmax(200px,auto)]">
+
+
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-[minmax(150px,auto)] sm:auto-rows-[minmax(200px,auto)]">
               {project.screenshots.map((ss, index) => {
                 const isPortrait = ss.orientation === 'P';
                 return (
@@ -196,12 +246,12 @@ const ProjectDetails = ({ project, onClose }) => {
                   </motion.div>
                 );
               })}
-
-
-
-
-
             </div>
+
+
+
+
+
             {/* Back Button */}
             <div className="mt-8 flex justify-center">
               <button

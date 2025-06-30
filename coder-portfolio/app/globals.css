@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom cursor styles - hide cursor on body and all elements */
+.custom-cursor-active {
+  cursor: none !important;
+}
+
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
+/* Keep text cursor for form inputs */
+.custom-cursor-active input,
+.custom-cursor-active textarea,
+.custom-cursor-active select {
+  cursor: text !important;
+}
+
+.custom-cursor-active input[type="file"] {
+  cursor: pointer !important;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

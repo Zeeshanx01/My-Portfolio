@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { SiNextdotjs, SiTailwindcss, SiShadcnui, SiClerk, SiStreamlit } from 'react-icons/si'
+// import { SiNextdotjs, SiTailwindcss, SiShadcnui, SiClerk, SiStreamlit } from 'react-icons/si'
 import Image from 'next/image'
 import TechStackModal from '../components/TechStackModal'
 import { getSkillsByNames } from '../constants/skillsData'
@@ -52,7 +52,7 @@ const Hero = () => {
               whileInView={{ letterSpacing: '0em' }}
               transition={{ duration: 0.4 }}
             >
-              Zeeshan.
+              Zeeshan
             </motion.h1>
             <motion.h2
               className={`text-5xl ${fontStyles.heading} text-gray-400 mb-8`}
@@ -172,6 +172,7 @@ const Hero = () => {
         techUrl={selectedTech?.url}
         techIcon={selectedTech?.icon}
         techDescription={selectedTech?.description}
+        techColor={selectedTech?.color}
       />
     </div>
   )

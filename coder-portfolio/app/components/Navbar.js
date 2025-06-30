@@ -153,7 +153,7 @@ const Navbar = () => {
                   <Image src={process.env.NEXT_PUBLIC_PROFILE_PIC} alt="" width={80} height={80} style={{objectFit: 'cover'}} priority />
                 </div>
                 <h1 className={`text-2xl ${fontStyles.heading} text-white`}>
-                  Zeeshan
+                  Zeeshan Munir
                 </h1>
                 <p className={`text-purple-400 ${fontStyles.mono}`}>
                   MERN-Stack Developer
@@ -301,7 +301,7 @@ const Navbar = () => {
               className={`text-2xl ${fontStyles.heading} text-white`}
               whileHover={{ x: 5 }}
             >
-              Zeeshan
+              Zeeshan Munir
             </motion.h1>
             <motion.p
               className={`text-purple-400 ${fontStyles.mono}`}

@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const TechStackModal = ({ open, onClose, techName, techUrl, techIcon: Icon, techDescription }) => {
+const TechStackModal = ({ open, onClose, techName, techUrl, techIcon: Icon, techDescription, techColor }) => {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [open]);
+
   if (!open) return null;
 
   const handleLearnMore = () => {
@@ -20,14 +31,36 @@ const TechStackModal = ({ open, onClose, techName, techUrl, techIcon: Icon, tech
           onClick={onClose}
         >
           <motion.div
-            className="bg-slate-900 border border-purple-500/30 rounded-xl p-8 max-w-sm w-full text-center relative"
+            className="bg-slate-900/70 border border-purple-500/30 rounded-xl p-8 max-w-sm w-full text-center relative"
             initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.95 }}
             onClick={e => e.stopPropagation()}
           >
+            {/* Close button */}
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
+              aria-label="Close modal"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
             <div className="flex flex-col items-center mb-4">
-              {Icon && <Icon className="text-5xl mb-2 text-purple-400" />}
+              {Icon && <Icon className={`text-5xl mb-2 ${techColor || 'text-purple-400'}`} />}
               <h3 className="text-2xl font-bold text-purple-400 mb-2">{techName}</h3>
             </div>
             <p className="text-white/80 mb-8 min-h-[60px]">{techDescription}</p>
